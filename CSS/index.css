@@ -1,0 +1,378 @@
+@font-face {
+    font-family: 'fontawesomeregular';
+    src: url('fontawesome-webfont-webfont.woff2') format('woff2'),
+        url('fontawesome-webfont-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('fonts/multi_roboto/Roboto-Regular-webfont.eot');
+    src: url('fonts/multi_roboto/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/multi_roboto/Roboto-Regular-webfont.woff2') format('woff2'),
+        url('fonts/multi_roboto/Roboto-Regular-webfont.woff') format('woff'),
+        url('fonts/multi_roboto/Roboto-Regular-webfont.ttf') format('truetype'),
+        url('fonts/multi_roboto/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('fonts/multi_roboto/Roboto-Bold-webfont.eot');
+    src: url('fonts/multi_roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/multi_roboto/Roboto-Bold-webfont.woff2') format('woff2'),
+        url('fonts/multi_roboto/Roboto-Bold-webfont.woff') format('woff'),
+        url('fonts/multi_roboto/Roboto-Bold-webfont.ttf') format('truetype'),
+        url('fonts/multi_roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotoblack';
+    src: url('fonts/multi_roboto/Roboto-Black-webfont.eot');
+    src: url('fonts/multi_roboto/Roboto-Black-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/multi_roboto/Roboto-Black-webfont.woff2') format('woff2'),
+        url('fonts/multi_roboto/Roboto-Black-webfont.woff') format('woff'),
+        url('fonts/multi_roboto/Roboto-Black-webfont.ttf') format('truetype'),
+        url('fonts/multi_roboto/Roboto-Black-webfont.svg#robotoblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+
+    margin: 0px;
+    font-size: 1em;
+}
+
+#page_principale {
+    font-family: roboto;
+    font-size: 1em;
+    width: 100%;
+}
+
+#header_image {
+    float: left;
+}
+
+#entete {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 112px;
+    position: fixed;
+    top: 0px;
+    z-index: 3;
+    width: 100%;
+    background: white;
+    border-bottom: 4px solid black;
+    border-radius: 0 0 3px;
+}
+
+#entete nav a {
+
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}
+
+#entete nav a:hover {
+    color: #e2be4b;
+    padding-top: 25px;
+    font-family: robotobold
+
+}
+
+nav {
+    margin-left: 450px;
+    margin-top: 52px;
+}
+
+#entete nav ul {
+    display: flex;
+}
+
+#entete nav li {
+    margin-right: 20px;
+    font-size: 1.2em;
+    list-style: none
+}
+
+#section_carousel {
+    width: 100%;
+    /*background-color: black;*/
+}
+
+#container_carousel {
+    display: flex;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50px;
+    border: solid 2px white;
+    height: 800px;
+}
+
+#image_carousel {
+    margin: 0px;
+    width: 100%;
+    margin-top: 110px;
+
+}
+
+#boite {
+
+    position: absolute;
+    bottom: 300px;
+    right: 200px;
+    width: 48%;
+    border-style: solid;
+    border-color: rgba(226, 190, 75, 0.57);
+    border-radius: 13px;
+    height: 185px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#titre_carousel {
+    color: white;
+    font-size: 2em;
+    font-family: robotobold;
+
+    text-decoration: underline;
+}
+
+#texte_carousel {
+    background-color: transparent;
+    font-size: 1.6em;
+    color: white;
+    font-family: roboto;
+    font-weight: bold;
+    font-style: italic;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+span.arrow_box {
+    bottom: 89%;
+    left: 2%;
+    border: solid transparent;
+    width: -2px;
+    position: absolute;
+    border-color: rgba(0, 180, 181, 0);
+    border-top-color: #695c31;
+    border-width: 22px;
+    margin-left: -28px;
+    transform: rotate(141deg)
+}
+
+#image_carousel img {
+    width: 100%;
+
+    display: flex;
+}
+
+
+#chevron1 {
+    display: flex;
+    position: absolute;
+    left: -8.56px;
+    top: calc(50% + 17.5px);
+    border-radius: 50px;
+    padding-left: 11.56px;
+    padding-right: 11.56px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 19px;
+    background: #0000008a;
+    color: white;
+}
+
+#chevron2 {
+    display: flex;
+    position: absolute;
+    right: -8.56px;
+    top: calc(50% + 17.5px);
+    border-radius: 50px;
+    padding-left: 11.56px;
+    padding-right: 11.56px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 19px;
+    background: #0000008a;
+    color: white;
+}
+
+#section_carte {
+    display: flex;
+    width: 100%;
+    height: 650px;
+    padding-top: 50px;
+    /*background-color: black*/
+}
+
+#carte {
+
+    z-index: 0;
+    opacity: 0.8;
+    height: 600px;
+    border: 3px solid white;
+    border-radius: 0px;
+    flex: 60;
+    margin: 10px;
+    position: relative;
+
+
+}
+
+#legende {
+    color: #e2be4b;
+    font-size: 1.4em;
+    position: relative;
+    bottom: 9px;
+}
+
+#legende2 {
+    color: #e2be4b;
+    font-size: 1.4em;
+    position: relative;
+    bottom: 9px;
+
+}
+
+#div_form {
+    border: 2px solid #e2be4b;
+    border-radius: 15px;
+    height: 400px;
+    flex: 30;
+    color: black;
+    font-family: roboto;
+    font-size: 1em;
+    position: relative;
+    top: calc(50% - 220px);
+    display: block;
+    margin: 10px;
+}
+
+#div_resa {
+    background-color: white;
+    display: flex;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.centre {
+    text-align: center;
+    font-size: 1.3em;
+    color: black;
+    text-decoration: underline
+}
+
+#adresse {
+    background-color: black;
+}
+
+#form1 #form2 #form3 {
+    position: relative;
+    padding-left: 40px;
+    font-size: 1.2em;
+}
+
+#form2 {
+    width: 100%;
+}
+
+#form3 {
+
+    width: 100%;
+
+}
+
+input#adresse,
+input#places,
+input#velos,
+input#nom_utilisateur,
+input#prenom_utilisateur {
+    background-color: white;
+    border: solid 1px black;
+    border: none;
+    color: black;
+    font-size: 1em;
+    font-family: robotobold;
+}
+
+input#nom_utilisateur,
+input#prenom_utilisateur {
+    background-color: #909090;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.submit {
+    background-color: #e2be4b;
+    color: black;
+    text-decoration: none;
+    font-family: 'robotobold';
+    /* font-weight: bold; */
+    font-size: 1.3em;
+    border-radius: 15px;
+    position: relative;
+    width: 36%;
+    height: 40px
+}
+
+label {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: roboto;
+    font-size: 1.1em;
+    display: inline-block;
+    width: 150px;
+}
+
+img {
+    width: 100%;
+}
+
+#canvas {
+
+    border-radius: 25px;
+
+    border: solid 1px #e2be4b
+}
+
+#messageFermeture {
+    bottom: inherit;
+    align-items: left;
+    /* display: block; */
+    position: relative;
+    align-items: right;
+    margin-bottom: 22px;
+    /* margin-top: 20px; */
+    height: 41px;
+    border-radius: 15px;
+    background-color: #909090;
+    font-size: 1.2em;
+    color: white;
+    font-family: roboto;
+    font-weight: bold;
+}
+#set{
+    background-color: #e2be4b;
+    color: black;
+    text-decoration: none;
+    font-family: 'robotobold';
+    font-size: 1.3em;
+    border-radius: 15px;
+    margin: 15px;
+
+}
+#detailsResa{
+    width:100%;
+    height: 120px;
+    background-color:#e2be4b;
+
+}
