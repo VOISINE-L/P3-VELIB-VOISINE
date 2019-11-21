@@ -83,8 +83,9 @@ body {
 #entete nav a:hover {
     color: #e2be4b;
     padding-top: 25px;
-    font-family: robotobold
-
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 nav {
