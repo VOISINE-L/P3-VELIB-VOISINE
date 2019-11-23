@@ -17,8 +17,6 @@ class Firm {
         this.buttonCanvas.textContent = "Envoyer votre demande"
         this.divResa.appendChild(this.buttonCanvas);
         this.divResa.style.display = "block"
-
-
         this.addListeners()
     }
     setUpCanvas() {
@@ -70,9 +68,6 @@ class Firm {
                 };
         })();
         this.drawLoop();
-
-
-
     }
 
     // Draw to the canvas
