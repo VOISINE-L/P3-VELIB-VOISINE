@@ -33,3 +33,4 @@ popupAnchor:  [0,-26], // point from which the popup should open relative to the
 //appel de la carte
 let app = new App("carte", [43.600000, 1.433333],icone);
 app.setMarkersFromApi("https://api.jcdecaux.com/vls/v1/stations?contract=toulouse&apiKey=1ebef17bde5413d6ad199afa6cffac6cee46aa37")
+this.reservationManager = new ReservationManager("div_resa");

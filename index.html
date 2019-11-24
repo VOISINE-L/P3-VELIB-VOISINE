@@ -2,42 +2,44 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="CSS/index.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="CSS/index.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
 
-    <!--  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico">-->
-    <title>VelÔ'Cité'</title>
+  <!--  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico">-->
+  <title>VelÔ'Cité'</title>
 </head>
 <div class="">
 
 </div>
+
 <body>
   <div></div>
-    <div id="page_principale">
-        <header id="entete">
-            <div id="header_image">
-                <img src="images_sliders/logo/logo_blanc_resized.jpg" alt="logo">
-            </div>
-            <div>
-                <nav>
-                    <ul>
+  <div id="page_principale">
+    <header id="entete">
+      <div id="header_image">
+        <img src="images_sliders/logo/logo_blanc_resized.jpg" alt="logo">
+      </div>
+      <div>
+        <nav>
+          <ul>
 
-                        <!--<li><a href=#section_carousel><img src="images_sliders/icones/maison.png"></li>-->
-                        <li><a href="#section_carte">STATIONS</a></li>
-                        <li><a href="#div_resa">RESERVATIONS</a></li>
+            <!--<li><a href=#section_carousel><img src="images_sliders/icones/maison.png"></li>-->
+            <li><a href="#section_carte">STATIONS</a></li>
+            <li><a href="#div_resa">RESERVATIONS</a></li>
 
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <section id="section_carousel">
-            <div id="container_carousel">
-                <!--POUR INFO --  SIMULATION HTML ----
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section id="section_carousel">
+      <div id="container_carousel">
+        <!--POUR INFO --  SIMULATION HTML ----
                     <div id="chevron1">
                     <i class="fas fa-chevron-left"></i>
                     <div id="chevron2">
@@ -51,49 +53,49 @@
                     <p id="texte_carousel"> Choisissez votre station</p>
                 </figcaption>
             </figure>-->
-            </div>
-        </section>
-        <section id="section_carte">
-            <div id="carte">
-            </div>
-            <fieldset id="div_form">
-                <legend id="legende"><span id="decalage">Pour valider votre réservation: </span></legend>
-                <form id="form1">
-                    <h2 class="centre"> Details de la station:</h2>
-                    <p>
-                        <label for=" adresse" size="auto"> Adresse: </label>
+      </div>
+    </section>
+    <section id="section_carte">
+      <div id="carte">
+      </div>
+      <fieldset id="div_form">
+        <legend id="legende"><span id="decalage">Pour valider votre réservation: </span></legend>
+        <form id="form1">
+          <h2 class="centre"> Details de la station:</h2>
+          <p>
+            <label for=" adresse" size="auto"> Adresse: </label>
 
-                        <span name="adresse" id="adresse"></span>
-                    </p>
-                    <p>
-                        <label for=" places"> Places libres: </label>
+            <span name="adresse" id="adresse"></span>
+          </p>
+          <p>
+            <label for=" places"> Places libres: </label>
 
-                        <span name="places" id="places"></span>
-                    </p>
-                    <p>
-                        <label for=" velos">Vélos disponibles: </label>
+            <span name="places" id="places"></span>
+          </p>
+          <p>
+            <label for=" velos">Vélos disponibles: </label>
 
-                        <span  name="velos" id="velos"></span>
-                    </p>
-                </form>
-                <div id="div_resa">
-                    <form id="form2" action="traitement.php">
-                        <p>
-                            <label for="prenom_utilisateur"> Votre prénom</label>
-                            <input type="text" name="prenom_utilisateur" id="prenom_utilisateur" size="auto">
-                        </p>
-                        <p>
-                            <label for="nom_utilisateur"> Votre nom</label>
-                            <input type="text" name=" votre second pseudo" id="nom_utilisateur">
-                        </p>
-                        <p>
-                            <input type="submit" name="submit" id="submit" class="submit" value="RESERVER" />
-                        </p>
-                    </form>
-                </div>
-            </fieldset>
-        </section>
-        <!--<section id="section_canvas">
+            <span name="velos" id="velos"></span>
+          </p>
+        </form>
+        <div id="div_resa">
+          <form id="form2" action="traitement.php">
+            <p>
+              <label for="prenom_utilisateur"> Votre prénom</label>
+              <input type="text" name="prenom_utilisateur" id="prenom_utilisateur" size="auto">
+            </p>
+            <p>
+              <label for="nom_utilisateur"> Votre nom</label>
+              <input type="text" name=" votre second pseudo" id="nom_utilisateur">
+            </p>
+            <p>
+              <input type="submit" name="submit" id="submit" class="submit" value="RESERVER" />
+            </p>
+          </form>
+        </div>
+      </fieldset>
+    </section>
+    <!--<section id="section_canvas">
         <canvas id="canvas" width="150" height="150">
             <div id="canvas_erreur">
              <img src="images_sliders/logo/logo_noir.jpg" alt="logo">
@@ -102,22 +104,21 @@
         </canvas>
 
         </section>-->
-    </div>
-    <!--fermeture de la page principale-->
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js.map"></script>
-    <script src="https://kit.fontawesome.com/ae366b8da9.js" crossorigin="anonymous"></script>
-<script src="JS/reservation.js"></script>
-<script src="JS/slider.js"></script>
-<script src="JS/app.js"></script>
-<script src="JS/utils.js"></script>
-<script src="JS/firm.js"></script>
-    <!--<script src="30 09 19 slider.js"></script>-->
-    <script src="JS/index.js"></script>
-    <!--chargement de la librairie fontawesome en JS-->
-    <script src="https://kit.fontawesome.com/ae366b8da9.js" crossorigin="anonymous"></script>
-    <!--chargement de la librairie leaflet-->
+  </div>
+  <!--fermeture de la page principale-->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js.map"></script>
+  <script src="https://kit.fontawesome.com/ae366b8da9.js" crossorigin="anonymous"></script>
+  <script src="JS/reservation.js"></script>
+  <script src="JS/firm.js"></script>
+  <script src="JS/slider.js"></script>
+  <script src="JS/app.js"></script>
+  <script src="JS/utils.js"></script>
+  <script src="JS/index.js"></script>
+  <!--chargement de la librairie fontawesome en JS-->
+  <script src="https://kit.fontawesome.com/ae366b8da9.js" crossorigin="anonymous"></script>
+  <!--chargement de la librairie leaflet-->
 </body>
 
 </html>
