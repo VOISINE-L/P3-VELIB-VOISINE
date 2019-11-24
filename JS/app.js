@@ -99,17 +99,20 @@ class App {
           velos.textContent = "";
           adresse.textContent = "";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
-      } /*else { //APPEL DU CANVAS SIGNATURE
-
-        this.submit.addEventListener("click", () => {
-          this.divForm.style.height = "460px";
+      } else { //APPEL DU CANVAS SIGNATURE
+/*
+      submit.addEventListener("click", (e) => {
+          e.preventDefault()
+        this.divForm.style.height = "460px";
           this.divForm.style.top = "calc(50% - 260px)"
           this.divResa.style.textAlign = "right"
           const firm = new Firm("div_resa");
           //marqueurCarte.removeEventListener("click")//? ne fonctionne pas
         })*/
 
-      }) //FERMETURE DU ELSE
-      //FERMETURE ADDEVENTLISTENERS SUR MARQUEURCARTE
-    }
+      }
+
+
+    })
   }
+}
