@@ -19,7 +19,7 @@ class App {
     this.fermeture = document.createElement("div");
     this.imageFermeture = document.createElement("img");
     this.messageFermeture = document.createElement("button");
-    this.submit = document.getElementById("submit");
+    //this.submit = document.getElementById("submit");
     this.reservationManager = new ReservationManager("div_resa");
   }
   //Fonction pour déclarer la carte
@@ -99,9 +99,9 @@ class App {
           velos.textContent = "";
           adresse.textContent = "";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
-      } else { //APPEL DU CANVAS SIGNATURE
+      } /*else { //APPEL DU CANVAS SIGNATURE
 
-        /*this.submit.addEventListener("click", () => {
+        this.submit.addEventListener("click", () => {
           this.divForm.style.height = "460px";
           this.divForm.style.top = "calc(50% - 260px)"
           this.divResa.style.textAlign = "right"
@@ -109,8 +109,7 @@ class App {
           //marqueurCarte.removeEventListener("click")//? ne fonctionne pas
         })*/
 
-      } //FERMETURE DU ELSE
+      }) //FERMETURE DU ELSE
       //FERMETURE ADDEVENTLISTENERS SUR MARQUEURCARTE
-    })
+    }
   }
-}
