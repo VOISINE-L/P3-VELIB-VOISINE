@@ -1,3 +1,5 @@
+//document.getElementById("infosResa").style.display="none";
+
 class App {
   /**
    *
@@ -100,6 +102,8 @@ class App {
           adresse.textContent = "";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
       } else { //APPEL DU CANVAS SIGNATURE
+        this.reservationManager;
+
 /*
       submit.addEventListener("click", (e) => {
           e.preventDefault()
