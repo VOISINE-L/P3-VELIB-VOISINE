@@ -11,6 +11,7 @@ class ReservationManager {
     this.userFormContainer = document.getElementById(reservation_box_id) // ex divResa
     this.userForm = document.getElementById("form2") // ex form2
     this.addListener();
+    this.resaConfirm = new ResaConfirm("set")
   }
 
   // addlistener pour faire apparaître le canvas, déclaré dans App.js L 25
@@ -24,8 +25,12 @@ class ReservationManager {
       console.log("name", name)
       if (surname.length > 0 && name.length > 0) {
         this.firmBox = new Firm(this.reservation_box_id)
+        this.divForm.style.height = "460px";
+          this.divForm.style.top = "calc(50% - 260px)"
+          this.divResa.style.textAlign = "right"
       }
 
     })
   }
+  this.resaConfirm;
 }

@@ -1,6 +1,6 @@
 //constructor appelé sur Div_resa dans app.js
 class ResaConfirm {
-  constructor (parentid) {
+  constructor(parentid) {
     this.parent = document.getElementById(parentId);
     this.station = station.name
     this.surname = undefined;
@@ -12,11 +12,11 @@ class ResaConfirm {
     var timeOut = undefined
     var stationChoisie = undefined;
     this.buttonCanvas = document.getElementById("set")
-    this.addListenerButtonCanvas();
+    this.addlistenerButtonCanvas()
+
   }
 
   //stocker le nom de la station choisie et l'heure de la résa
-
   addlistenerButtonCanvas() {
     console.log(toto)
     this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
@@ -33,24 +33,22 @@ class ResaConfirm {
       })
     }
   }
-
-
   // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
   countdown = function() {
     //Rajout de 20mn à l'heure de début de réservation
-
+    console.log("tata")
     this.intervalId = setInterval(function() { //	lance la function à executer chaque seconde
       var currentHour = new Date();
       var decompte = Math.floor((sessionStorage.getItem(this.timeOut) - currentHour.getTime()) / 1000);
       if (decompte > 0) {
         //% pour afficher des entiers
-        var minuts = Math.floor(decompte % 3600 / 60);
+        var minutes = Math.floor(decompte % 3600 / 60);
         var seconds = Math.floor(decompte % 60);
         if (minutes < 10) {
-          minutes = ("0" + minuts);
+          minutes = ("0" + minutes);
         }
-        if (secondes < 10) {
-          secondes = ("0" + seconds);
+        if (seconds < 10) {
+          seconds = ("0" + seconds);
         }
         this.counterReservation.textContent = sessionStorage.getItem("timeOut") + minutes + 'mn' + secondes + 's ';
       } else { //s'arrete a 0
@@ -59,14 +57,12 @@ class ResaConfirm {
       }
     }, 1000);
   }
-
   affichageSectionInfosResa() {
     //faire réapparaître la div section infosResa etlui imputer les infos de la résa
     document.getElementById("infosResa").style.display = "block";
     this.station = station.name;
     this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie")
   }
-
   //Pour ré-initialiser une fois le temps écoulé
   clearReservation = function() {
     var sectionInfosResa = document.getElementById("infosResa");
@@ -74,7 +70,6 @@ class ResaConfirm {
     var messageExpiration = document.createElement("h2");
     MessageExpiration.textContent = "Votre réservation a expiré";
     sectionInfosResa.appendChild(messageExpiration)
-
     // on enlève le stockage des donnée et le décompte
     sessionStorage.removeItem("tempsEcoulé");
     sessionStorage.removeItem("stationChoisie");

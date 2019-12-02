@@ -23,6 +23,7 @@ class App {
     this.messageFermeture = document.createElement("button");
     //this.submit = document.getElementById("submit");
     this.reservationManager = new ReservationManager("div_resa");
+    this.resaConfirm = new ResaConfirm("set")
   }
   //Fonction pour déclarer la carte
   setMap(mapId, mapCenter) {
@@ -103,6 +104,7 @@ class App {
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
       } else { //APPEL DU CANVAS SIGNATURE
         this.reservationManager;
+        this.resaConfirm;
 
 /*
       submit.addEventListener("click", (e) => {
