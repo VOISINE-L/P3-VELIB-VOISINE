@@ -5,8 +5,6 @@ class Timer {
         this.compteurMin = document.getElementById(compteurId1);
         this.compteurSec = document.getElementById(compteurId2);
         this.intervalle = null;
-
-
     }
 
     decrementerCompteur() {

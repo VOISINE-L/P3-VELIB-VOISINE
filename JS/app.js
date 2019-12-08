@@ -23,7 +23,7 @@ class App {
     this.messageFermeture = document.createElement("button");
     //this.submit = document.getElementById("submit");
     this.reservationManager = new ReservationManager("div_resa");
-    this.resaConfirm = new ResaConfirm("set")
+
   }
   //Fonction pour déclarer la carte
   setMap(mapId, mapCenter) {
@@ -51,6 +51,7 @@ class App {
     var marqueurCarte = L.marker([station.position.lat, station.position.lng], {
       icon: this.icone
     }) //.addTo(this.carte)//INUTILE REDONDANT AVEC LIGNE 308
+    marqueurCarte.nomStation = station.name;
     marqueurCarte.velosDispo = station.available_bikes;
     marqueurCarte.placesDispo = station.available_bike_stands
     marqueurCarte.adresseStation = station.address;
@@ -67,11 +68,13 @@ class App {
     let places = document.getElementById("places")
     let velos = document.getElementById("velos")
     let adresse = document.getElementById("adresse")
+    let nomStation = document.getElementById("nomStation")
 
     param.addEventListener("click", () => {
       adresse.textContent = param.adresseStation
       places.textContent = param.placesDispo
       velos.textContent = param.velosDispo
+      nomStation.textContent = param.nomStation;
       //this.form.elements.velos.value = param.velosDispo
       //this.form.elements.adresse.value = param.adresseStation
       //GESTION DES ELEMENTS DE MESSAGE EN CAS DE STATION FERMEE OU VELO INDISPO
@@ -104,21 +107,7 @@ class App {
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
       } else { //APPEL DU CANVAS SIGNATURE
         this.reservationManager;
-        this.resaConfirm;
-
-/*
-      submit.addEventListener("click", (e) => {
-          e.preventDefault()
-        this.divForm.style.height = "460px";
-          this.divForm.style.top = "calc(50% - 260px)"
-          this.divResa.style.textAlign = "right"
-          const firm = new Firm("div_resa");
-          //marqueurCarte.removeEventListener("click")//? ne fonctionne pas
-        })*/
-
-      }
-
-
+       }
     })
   }
 }
