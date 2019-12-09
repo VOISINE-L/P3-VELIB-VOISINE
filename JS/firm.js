@@ -9,7 +9,10 @@ class Firm {
     this.ctx.lineWidth = 2;
     // Set up mouse events for drawing
     this.drawing = false;
-    this.mousePos = {x: 0,y: 0};
+    this.mousePos = {
+      x: 0,
+      y: 0
+    };
     this.lastPos = this.mousePos;
     this.divResa = document.getElementById("div_resa")
     this.divResa.style.display = "block";
@@ -28,8 +31,9 @@ class Firm {
   }
   getMousePos(canvasDom, mouseEvent) {
     let rect = canvasDom.getBoundingClientRect();
-    return {x: mouseEvent.clientX - rect.left,
-            y: mouseEvent.clientY - rect.top
+    return {
+      x: mouseEvent.clientX - rect.left,
+      y: mouseEvent.clientY - rect.top
     }
   }
   // fonction flechées car si fonction anonyme le this devient l'event et non plus l'objet( garder le contexte de l'objet)
@@ -74,30 +78,21 @@ class Firm {
     requestAnimFrame(this.drawLoop.bind(this));
     this.renderCanvas();
   };
-  CanvasBlank() {
-    const blank = document.createElement('canvas');
-    blank.width = canvas.width;
-    blank.height = canvas.height;
-    return canvas.toDataURL() === blank.toDataURL();
-  }
+
+
 
   setUpCanvasButton() {
     this.buttonCanvas = document.createElement("button")
     this.buttonCanvas.id = "set"
     this.buttonCanvas.textContent = "Envoyer votre demande"
     this.divResa.appendChild(this.buttonCanvas);
-  }
-  addlistenerButtonCanvas() {
-  if (canvasBlank()) {
-    alert('Veuillez signer votre réservation'); // Message en cas de canvas vide
-    //et dispatcher l'event firm
-  } else {
     this.buttonCanvas.addEventListener("click", () => {
       let event = new Event("firmedEvent", {
         bubbles: true
       });
       document.dispatchEvent(event);
     })
-   }
   }
+
+
 }

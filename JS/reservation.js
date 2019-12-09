@@ -43,7 +43,7 @@ class ReservationManager {
         this.divResa.style.textAlign = "right"
       }
     })
-  }//fermeture addlistener
+  } //fermeture addlistener
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
     this.intervalId = setInterval(function() { //	lance la function à executer chaque seconde
@@ -86,14 +86,20 @@ class ReservationManager {
   }
 
   document.addEventListener("firmedEvent", () => {
-      // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
+        const blank = document.createElement('canvas');
+        if ((blank.width = canvas.width) && (blank.height = canvas.height)) {
+          return canvas.toDataURL() === blank.toDataURL();
+          alert('Veuillez signer votre réservation'); // Message en cas de canvas vide
+          //et dispatcher l'event firm
+        } else {
+          // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
+          this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
+          //stocker le nom de la station choisie et l'heure de la résa
+          this.stationChoisie = sessionStorage.setItem("stationChoisie", this.station)
+          document.getElementById("infosResa").style.display = "block";
+          this.affichageSectionInfosResa().bind(this);
+          this.countdown().bind(this);
+          }
 
-      //stocker le nom de la station choisie et l'heure de la résa
-      this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
-      this.stationChoisie = sessionStorage.setItem("stationChoisie", this.station)
-      document.getElementById("infosResa").style.display = "block";
-      this.affichageSectionInfosResa().bind(this);
-      this.countdown().bind(this);
   }
-
 }
