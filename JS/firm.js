@@ -9,16 +9,12 @@ class Firm {
     this.ctx.lineWidth = 2;
     // Set up mouse events for drawing
     this.drawing = false;
-    this.mousePos = {
-      x: 0,
-      y: 0
-    };
+    this.mousePos = {x: 0,y: 0};
     this.lastPos = this.mousePos;
     this.divResa = document.getElementById("div_resa")
     this.divResa.style.display = "block";
     this.setUpCanvasButton();
     this.addListeners()
-    this.addlistenerButtonCanvas()
   }
 
   setUpCanvas() {
@@ -29,6 +25,7 @@ class Firm {
     canvas.id = "canvas";
     return canvas; //cf ligne 5
   }
+// obtenir la positon de la souris une fois le
   getMousePos(canvasDom, mouseEvent) {
     let rect = canvasDom.getBoundingClientRect();
     return {
@@ -36,7 +33,7 @@ class Firm {
       y: mouseEvent.clientY - rect.top
     }
   }
-  // fonction flechées car si fonction anonyme le this devient l'event et non plus l'objet( garder le contexte de l'objet)
+  // fonctions flechées car si fonction anonyme le this devient l'event et non plus l'objet( garder le contexte de l'objet)
   addListeners() {
     this.canvas.addEventListener("mousedown", (e) => {
       this.drawing = true;
@@ -47,13 +44,12 @@ class Firm {
       this.drawing = false;
     }, false);
 
-
     this.canvas.addEventListener("mousemove", (e) => { //mousepos devient la lastPos
       //pas besoin du drawing
       this.mousePos = this.getMousePos(this.canvas, e);
     }, false);
 
-    window.requestAnimFrame = (function(callback) { // le callback est le drawloop
+    window.requestAnimFrame = (function(callback) { // le callback est le drawloop et également l'event
       return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
@@ -79,8 +75,7 @@ class Firm {
     this.renderCanvas();
   };
 
-
-
+  // Creation d'un bouton canvas et attribution d'un customEvent sur son click
   setUpCanvasButton() {
     this.buttonCanvas = document.createElement("button")
     this.buttonCanvas.id = "set"

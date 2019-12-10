@@ -1,4 +1,5 @@
-//document.getElementById("infosResa").style.display="none";
+// Pour eviter à la div de confirmationde drésa d'apparaître avant le listener sur le bouton Canvas
+document.getElementById("infosResa").style.display="none";
 
 class App {
   /**
@@ -15,15 +16,12 @@ class App {
     this.form = document.getElementById("form1");
     this.form2 = document.getElementById("form2")
     this.divResa = document.getElementById("div_resa");
-    //this.submit = document.getElementById("submit");
     this.divSectionCarte = document.getElementById("section_carte");
     this.divForm = document.getElementById("div_form");
     this.fermeture = document.createElement("div");
     this.imageFermeture = document.createElement("img");
     this.messageFermeture = document.createElement("button");
-    //this.submit = document.getElementById("submit");
-    this.reservationManager = new ReservationManager("div_resa");
-
+    this.reservationManager = new ReservationManager("div_resa");// on relie à Reservation.js, on appelle ligne 106
   }
   //Fonction pour déclarer la carte
   setMap(mapId, mapCenter) {
@@ -61,7 +59,6 @@ class App {
     this.carte.addLayer(this.clusters);
     this.status = station.status;
     return marqueurCarte;
-
   }
   //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction, ici ligne 32
   addlistenersCarte(param) {
@@ -75,8 +72,7 @@ class App {
       places.textContent = param.placesDispo
       velos.textContent = param.velosDispo
       nomStation.textContent = param.nomStation;
-      //this.form.elements.velos.value = param.velosDispo
-      //this.form.elements.adresse.value = param.adresseStation
+
       //GESTION DES ELEMENTS DE MESSAGE EN CAS DE STATION FERMEE OU VELO INDISPO
       if (this.status != "OPEN" || param.velosDispo === 0) {
         this.divSectionCarte.style.height = "auto";
@@ -101,9 +97,11 @@ class App {
           this.divResa.appendChild(this.form2);
           this.divSectionCarte.style.height = "650px";
           this.divForm.style.height = "400px";
+
           places.textContent = "";
           velos.textContent = "";
           adresse.textContent = "";
+          nomStation.textContent ="";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
       } else { //APPEL DU CANVAS SIGNATURE
         this.reservationManager;
