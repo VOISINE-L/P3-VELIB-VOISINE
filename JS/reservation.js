@@ -64,7 +64,7 @@ class ReservationManager {
 
   } //fermeture addlistener
 
-  // Ceci enlève le canvas et  remet les formulaires details de la station et utilisateur à blanc au bout de 3 s
+  // Ceci enlève le canvas et  remet les formulaires details de la station et utilisateur à blanc
   resetForms(){
         document.getElementById("infosResa").style.display = "none";
         this.divResa.innerHTML="";
@@ -143,6 +143,4 @@ class ReservationManager {
     sessionStorage.removeItem("tempsEcoulé");
     sessionStorage.removeItem("stationChoisie");
   }
-
-
 }
