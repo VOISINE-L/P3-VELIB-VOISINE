@@ -22,6 +22,7 @@ class App {
     this.imageFermeture = document.createElement("img");
     this.messageFermeture = document.createElement("button");
     this.reservationManager = new ReservationManager("div_resa");// on relie à Reservation.js, on appelle ligne 106
+
   }
   //Fonction pour déclarer la carte
   setMap(mapId, mapCenter) {
@@ -89,7 +90,6 @@ class App {
         this.fermeture.appendChild(this.messageFermeture); // la div ajoutée contient un message
         this.form.style.display = "none" // Le formulaire disparait
 
-
         this.messageFermeture.addEventListener("click", (e) => { // au click sur le bouton du message de station fermée,
           //on doit repartir sur les formulaires initiaux
           this.form.style.display = "block";
@@ -105,6 +105,7 @@ class App {
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
       } else { //APPEL DU CANVAS SIGNATURE
         this.reservationManager;
+
        }
     })
   }

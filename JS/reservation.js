@@ -14,7 +14,6 @@ class ReservationManager {
     this.intervalId = undefined;
     this.counterReservation = document.getElementById("compteurReservation")
     this.addressInfosResa = document.getElementById("adresseInfosresa")
-    this.countDown = undefined;
     this.timeOut = undefined;
     this.stationChoisie = undefined;
       this.sectionInfosResa = document.getElementById("infosResa");
@@ -59,14 +58,13 @@ class ReservationManager {
             sessionStorage.setItem("stationChoisie", this.nomStation)
             this.affichageSectionInfosResa();
             this.countdown();
-
             }
     });
 
   } //fermeture addlistener
 
   // Ceci enlève le canvas et  remet les formulaires details de la station et utilisateur à blanc
-  resetForms(){
+ resetForms(){
         document.getElementById("infosResa").style.display = "none";
         this.divResa.innerHTML="";
         this.divResa.style.textAlign = "center";
@@ -78,22 +76,24 @@ class ReservationManager {
         adresse.textContent = ""
         places.textContent = ""
         velos.textContent = ""
-        nomStation.textContent = ""
+        nomStation.textContent = "";
+
 
   }
-   /*initialStateForms(){
+   initialStateForms(){
         document.getElementById("infosResa").style.display = "none";
         this.divResa.innerHTML="";
         this.divResa.style.textAlign = "center";
         this.divResa.appendChild(this.userForm);
         this.surname;
         this.name;
+
         // A l'expiration du décompte, on vide également le formulaire de détail de la station
         //adresse.textContent = this.station.address;
         //places.textContent = param.placesDispo
         //velos.textContent = param.velosDispo
         //nomStation.textContent = param.nomStation
-  }*/
+  }
 
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
@@ -117,12 +117,11 @@ class ReservationManager {
         this.counterReservation.textContent = minutes + 'mn' + seconds + 's ';
       } else { //s'arrete à 0
       // Ceci vide la div de confirmation Résa lorsque le compteur est à 0 et affiche le message d'expiration
-        this.clearReservation()
-        this.resetForms()
+      this.clearReservation()
+      //this.resetForms();
         console.log("1")
         }
     }, 1000);
-      //this.initialStateForms()
   }
   //faire réapparaître la div section infosResa etlui imputer les infos de la résa
   affichageSectionInfosResa() {
@@ -134,12 +133,21 @@ class ReservationManager {
   clearReservation() {
     console.log("2")
 
-    this.sectionInfosResa.innerHTML = ""
+    this.sectionInfosResa.innerHTML = "";
     // on enlève le stockage des donnée et le décompte
     sessionStorage.removeItem("tempsEcoulé");
     sessionStorage.removeItem("stationChoisie");
     var messageExpiration = document.createElement("h2");
     this.sectionInfosResa.appendChild(messageExpiration)
-    messageExpiration.textContent = "Votre réservation a expiré";
+    messageExpiration;
+    messageExpiration.textContent = "Votre réservation a expiré"
+setTimeout(() => {
+  this.resetForms()
+}, 2000);
+
+
+
+    //this.initialStateForms();
+
   }
 }
