@@ -16,7 +16,7 @@ class ReservationManager {
     this.addressInfosResa = document.getElementById("adresseInfosresa")
     this.timeOut = undefined;
     this.stationChoisie = undefined;
-      this.sectionInfosResa = document.getElementById("infosResa");
+    this.sectionInfosResa = document.getElementById("infosResa");
     this.addListener();
   }
 
@@ -36,9 +36,10 @@ class ReservationManager {
         this.firmBox = new Firm(this.reservation_box_id)
         this.divForm.style.height = "460px";
         this.divForm.style.top = "calc(50% - 260px)"
-        this.divResa.style.textAlign = "right"
+        this.divResa.style.textAlign = "center";
+        this.divForm.style.height = "500px"
       }
-    })
+    });
     // addlistener pour écouter le canvas à l'aide de l'evenement personnalisé -firmedEvent déclaré dans firm
     document.addEventListener("firmedEvent", () => {
       //console.log("event ecouté")
@@ -60,7 +61,6 @@ class ReservationManager {
             this.countdown();
             }
     });
-
   } //fermeture addlistener
 
   // Ceci enlève le canvas et  remet les formulaires details de la station et utilisateur à blanc
@@ -80,7 +80,7 @@ class ReservationManager {
 
 
   }
-   initialStateForms(){
+   /*initialStateForms(){
         document.getElementById("infosResa").style.display = "none";
         this.divResa.innerHTML="";
         this.divResa.style.textAlign = "center";
@@ -93,7 +93,7 @@ class ReservationManager {
         //places.textContent = param.placesDispo
         //velos.textContent = param.velosDispo
         //nomStation.textContent = param.nomStation
-  }
+  }*/
 
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
@@ -118,7 +118,6 @@ class ReservationManager {
       } else { //s'arrete à 0
       // Ceci vide la div de confirmation Résa lorsque le compteur est à 0 et affiche le message d'expiration
       this.clearReservation()
-      //this.resetForms();
         console.log("1")
         }
     }, 1000);
@@ -131,7 +130,6 @@ class ReservationManager {
 
   //Pour ré-initialiser la div d'information de reservation  une fois le temps écoulé
   clearReservation() {
-    console.log("2")
 
     this.sectionInfosResa.innerHTML = "";
     // on enlève le stockage des donnée et le décompte
@@ -140,14 +138,7 @@ class ReservationManager {
     var messageExpiration = document.createElement("h2");
     this.sectionInfosResa.appendChild(messageExpiration)
     messageExpiration;
-    messageExpiration.textContent = "Votre réservation a expiré"
-setTimeout(() => {
-  this.resetForms()
-}, 2000);
-
-
-
-    //this.initialStateForms();
-
+    messageExpiration.textContent = "Votre réservation a expiré";
   }
+
 }

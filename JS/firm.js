@@ -9,7 +9,7 @@ class Firm {
     this.ctx.lineWidth = 2;
     // Set up mouse events for drawing
     this.drawing = false;
-    this.mousePos = {x: 0,y: 0};
+    this.mousePos = {x:0,y:0};
     this.lastPos = this.mousePos;
     this.divResa = document.getElementById("div_resa")
     this.divResa.style.display = "block";
@@ -36,9 +36,11 @@ class Firm {
   // fonctions flechées car si fonction anonyme le this devient l'event et non plus l'objet( garder le contexte de l'objet)
   addListeners() {
     this.canvas.addEventListener("mousedown", (e) => {
-      this.drawing = true;
-      this.lastPos = this.getMousePos(this.canvas, e); // la position rectifiée en x et y de la souris
-    }, false);
+	  this.drawing = true;
+	  let x = e.offsetX;
+	   let y = e.offsetY;
+      this.lastPos = {x, y}
+    }, false)
 
     this.canvas.addEventListener("mouseup", () => { // arrêt du dessin
       this.drawing = false;

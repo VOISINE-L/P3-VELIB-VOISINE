@@ -157,18 +157,7 @@ nav {
     padding-left: 30px;
 }
 
-span.arrow_box {
-    bottom: 89%;
-    left: 2%;
-    border: solid transparent;
-    width: -2px;
-    position: absolute;
-    border-color: rgba(0, 180, 181, 0);
-    border-top-color: #695c31;
-    border-width: 22px;
-    margin-left: -28px;
-    transform: rotate(141deg)
-}
+
 
 #image_carousel img {
     width: 100%;
@@ -243,19 +232,34 @@ span.arrow_box {
     bottom: 9px;
 
 }
+p{
+  display:flex;
+}
 
 #div_form {
-    border: 2px solid #e2be4b;
-    border-radius: 15px;
-    height: 400px;
-    flex: 30;
-    color: black;
-    font-family: roboto;
-    font-size: 1em;
-    position: relative;
-    top: calc(50% - 220px);
-    display: block;
-    margin: 10px;
+  border: 4px solid #e2be4b;
+  border-radius: 15px;
+  height: 400px;
+  flex: 40;
+  color: black;
+  font-family: roboto;
+  font-weight: bold;
+  font-size: 1em;
+  position: relative;
+  top: calc(50% - 230px)
+}
+
+span#nomStation,
+span#velos,
+span#places{
+    padding-left: 30px;
+    font-weight: bold;
+    overflow: break-word;
+
+
+}
+span#adresse{
+    padding-left: 30px;
 }
 
 #div_resa {
@@ -289,9 +293,7 @@ span.arrow_box {
 
 }
 
-input#adresse,
-input#places,
-input#velos,
+
 input#nom_utilisateur,
 input#prenom_utilisateur {
   background-color: white;
@@ -322,14 +324,17 @@ input#prenom_utilisateur {
     width: 36%;
     height: 40px
 }
+#pSubmit{
+  display:block;
+}
 
 label {
-    padding-right: 10px;
-    padding-left: 10px;
+
+    padding-left:20px;
     font-family: roboto;
     font-size: 1.1em;
     display: inline-block;
-    width: 150px;
+    width: 200px;
 }
 
 img {
@@ -375,3 +380,67 @@ img {
     background-color:#e2be4b;
 
 }
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width: 900px)
+{
+
+    #container_carousel{
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      border-radius: 50px;
+      border: solid 2px white;
+      height: auto;
+  }
+    #image_carousel {
+      margin: 0px;
+      width: 100%;
+      margin-top: 110px;
+    }
+
+    #section_carte {
+    display: inline;
+  }
+  .submit{
+    width:20%;
+  }
+  #set{
+    display:flex;
+    margin-left:450px;
+  }
+
+  #boite {
+  position: absolute;
+  bottom: 150px;
+  right: 128px;
+  width :59%;
+
+  }
+  #entete nav ul {
+  display:block;
+  }
+}
+
+
+
+@media all and (max-width: 800px)
+ {
+
+}
+@media all and (max-width: 750px)
+{
+
+}
+@media all and (max-width: 450px)
+ {
+
+  }

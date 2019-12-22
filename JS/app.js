@@ -73,6 +73,7 @@ class App {
       places.textContent = param.placesDispo
       velos.textContent = param.velosDispo
       nomStation.textContent = param.nomStation;
+      this.divForm.style.height = "460px"
 
       //GESTION DES ELEMENTS DE MESSAGE EN CAS DE STATION FERMEE OU VELO INDISPO
       if (this.status != "OPEN" || param.velosDispo === 0) {
