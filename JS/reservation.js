@@ -80,21 +80,6 @@ class ReservationManager {
 
 
   }
-   /*initialStateForms(){
-        document.getElementById("infosResa").style.display = "none";
-        this.divResa.innerHTML="";
-        this.divResa.style.textAlign = "center";
-        this.divResa.appendChild(this.userForm);
-        this.surname;
-        this.name;
-
-        // A l'expiration du décompte, on vide également le formulaire de détail de la station
-        //adresse.textContent = this.station.address;
-        //places.textContent = param.placesDispo
-        //velos.textContent = param.velosDispo
-        //nomStation.textContent = param.nomStation
-  }*/
-
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
     this.intervalId = setInterval(()=> { //	lance la function à executer chaque seconde
