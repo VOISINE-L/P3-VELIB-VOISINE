@@ -12,7 +12,6 @@ class Timer {
         var nbSecondes = Number(this.compteurSec.textContent);
         var nbMinutes = Number(this.compteurMin.textContent);
 
-
         if ((nbSecondes === 0) && (nbMinutes != 0)) {
             nbSecondes = 59;
             nbMinutes--;
@@ -22,9 +21,7 @@ class Timer {
         }
         if ((nbSecondes === 0) && (nbMinutes === 0)) {
             clearInterval(this.intervalle);
-
         }
-
             this.compteurMin.textContent = nbMinutes;
             this.compteurSec.textContent = nbSecondes;
 

@@ -232,9 +232,9 @@ nav {
     bottom: 9px;
 
 }
-p{
+/*p{
   display:flex;
-}
+}*/
 
 #div_form {
   border: 4px solid #e2be4b;
@@ -266,7 +266,7 @@ span#adresse{
     background-color: white;
     display: flex;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .centre {

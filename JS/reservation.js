@@ -4,8 +4,8 @@ class ReservationManager {
     this.reservation_box_id = reservation_box_id;
     this.nomStation = undefined;
     this.surname = undefined;
-    this.address = undefined;
     this.name = undefined;
+    this.address = undefined;
     this.EndReservation = undefined;
     this.firmBox = undefined; //ex DivForm
     this.firm = undefined; // signature
@@ -16,7 +16,10 @@ class ReservationManager {
     this.addressInfosResa = document.getElementById("adresseInfosresa")
     this.timeOut = undefined;
     this.stationChoisie = undefined;
+    this.localName=undefined;
+    this.localSurname = undefined;
     this.sectionInfosResa = document.getElementById("infosResa");
+    this.label = document.getElementById("label");
     this.addListener();
   }
 
@@ -26,7 +29,9 @@ class ReservationManager {
     this.userForm.addEventListener("submit", (e) => {
       this.divForm = document.getElementById("div_form");
       this.divResa = document.getElementById("div_resa");
-      e.preventDefault()
+      e.preventDefault();
+
+
       this.name = this.userForm.elements.prenom_utilisateur.value;
       this.surname = this.userForm.elements.nom_utilisateur.value;
       this.address = document.getElementById("adresse").textContent;
@@ -35,51 +40,69 @@ class ReservationManager {
       if (this.surname.length > 0 && this.name.length > 0) {
         this.firmBox = new Firm(this.reservation_box_id)
         this.divForm.style.height = "460px";
-        this.divForm.style.top = "calc(50% - 260px)"
+        this.divForm.style.top = "calc(50% - 260px)";
         this.divResa.style.textAlign = "center";
-        this.divForm.style.height = "500px"
-      }
-    });
+        this.divForm.style.height = "500px";
+      }/*else{
+        this.name.style.backgroundColor="red";
+        this.surname.style.backgroundColor="red";
+
+      }*/
+    })
+
     // addlistener pour écouter le canvas à l'aide de l'evenement personnalisé -firmedEvent déclaré dans firm
     document.addEventListener("firmedEvent", () => {
       //console.log("event ecouté")
           const blank = document.createElement("canvas");// creation d'un canvas vide, à comparer au canvas de mon appli
           blank.width = this.firmBox.canvas.width;
           blank.height = this.firmBox.canvas.height;
+          // rajout d'une condition pou roblier à selectionner un marqueur Leaflet
+
+          if (adresse.textContent ===""){
+            this.label.style.borderColor = "red";
+            this.label.style.borderWidth = "2px";
+            this.label.style.borderStyle = "solid";
+            alert("N'oubliez pas de selectionner une station");
+          }else{
+            this.label.style.borderColor = "transparent";
+          }
           if (blank.toDataURL() == this.firmBox.canvas.toDataURL()) {
-            alert('Veuillez signer votre réservation'); // Message en cas de canvas vide
+            alert("N'oubliez pas de signer votre réservation"); // Message en cas de canvas vide
             //et dispatcher l'event firmedEvent
-          } else {
+          }else{
             // on fait réapparaitre la div de confirmation de résa qui a été masquée en app.js ligne 2
               document.getElementById("infosResa").style.display = "block";
             // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
             this.endReservation =  Date.now()+ 5000;
             this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
             //stocker le nom de la station choisie et l'heure de la résa
-            sessionStorage.setItem("stationChoisie", this.nomStation)
+            this.stationChoisie = sessionStorage.setItem("stationChoisie", this.nomStation)
             this.affichageSectionInfosResa();
             this.countdown();
             }
     });
   } //fermeture addlistener
+  /*resetForms(){
+         document.getElementById("infosResa").style.display = "none";
+         this.divResa.innerHTML="";
+         this.divResa.style.textAlign = "center";
+         this.divResa.appendChild(this.userForm);
+         this.userForm.elements.prenom_utilisateur.value ="";
+         this.userForm.elements.nom_utilisateur.value ="";
+         // ces variables sont reprises de app.js aux lignes 71 et suivantes
+         // A l'expiration du décompte, on vide également le formulaire de détail de la station
+         adresse.textContent = "";
+         places.textContent = "";
+         velos.textContent = "";
+         this.localName=    localStorage.setItem("name", this.name)
+         this.localSurname = localStorage.setItem("surname", this.surname)
+         this.name = localStorage.getItem("name");
+         this.surname = localStorage.getItem("surname")
+   };*/
 
   // Ceci enlève le canvas et  remet les formulaires details de la station et utilisateur à blanc
- resetForms(){
-        document.getElementById("infosResa").style.display = "none";
-        this.divResa.innerHTML="";
-        this.divResa.style.textAlign = "center";
-        this.divResa.appendChild(this.userForm);
-        this.userForm.elements.prenom_utilisateur.value ="";
-        this.userForm.elements.nom_utilisateur.value ="";
-        // ces variables sont reprises de app.js aux lignes 71 et suivantes
-        // A l'expiration du décompte, on vide également le formulaire de détail de la station
-        adresse.textContent = ""
-        places.textContent = ""
-        velos.textContent = ""
-        nomStation.textContent = "";
 
 
-  }
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
     this.intervalId = setInterval(()=> { //	lance la function à executer chaque seconde
