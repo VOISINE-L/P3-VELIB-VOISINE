@@ -78,7 +78,7 @@ class App {
       //GESTION DES ELEMENTS DE MESSAGE EN CAS DE STATION FERMEE OU VELO INDISPO
       if (this.status != "OPEN" || param.velosDispo === 0) {
         this.divSectionCarte.style.height = "auto";
-        this.divForm.style.height = "auto";
+        this.divForm.style.height = "590px";
         this.fermeture.id = "form3";
         this.imageFermeture.src = "images_sliders/png/chien-carlin.png";
         this.messageFermeture = document.createElement("button");

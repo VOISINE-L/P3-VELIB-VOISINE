@@ -63,7 +63,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 112px;
+    height: 113px;
     position: fixed;
     top: 0px;
     z-index: 3;
@@ -426,7 +426,11 @@ img {
 
   }
   #entete nav ul {
-  display:block;
+  display:flex;
+  }
+  nav {
+      margin-left: 0px;
+      margin-top: 0px;
   }
 }
 
