@@ -6,14 +6,14 @@ class ReservationManager {
     this.surname = undefined;
     this.name = undefined;
     this.address = undefined;
-    this.EndReservation = undefined;
+    this.EndReservation = undefined;// heure de fin de la reservation
     this.firmBox = undefined; //ex DivForm
     this.firm = undefined; // signature
     this.userFormContainer = document.getElementById(reservation_box_id) // ex divResa
     this.userForm = document.getElementById("form2")
     this.intervalId = undefined;
-    this.counterReservation = document.getElementById("compteurReservation")
-    this.addressInfosResa = document.getElementById("adresseInfosresa")
+    this.counterReservation = document.getElementById("compteurReservation");
+    this.addressInfosResa = document.getElementById("adresseInfosresa");
     this.timeOut = undefined;
     this.stationChoisie = undefined;
     this.localName=undefined;
@@ -21,13 +21,12 @@ class ReservationManager {
     this.sectionInfosResa = document.getElementById("infosResa");
     this.label = document.getElementById("label");
     this.addListener();
-    this.retrieveReservation();
+    //this.retrieveReservation();
   }
 
   // addlistener pour faire apparaître le canvas, déclaré dans App.js L 25
   addListener() {
-
-    this.userForm.addEventListener("submit", (e) => {
+    this.userForm.addEventListener("submit", (e)=> {
       this.divForm = document.getElementById("div_form");
       this.divResa = document.getElementById("div_resa");
       e.preventDefault();
@@ -35,7 +34,8 @@ class ReservationManager {
       this.surname = this.userForm.elements.nom_utilisateur.value;
       this.address = document.getElementById("adresse").textContent;
       // ajout des parametres du nom de la station
-      this.nomStation = document.getElementById("nomStation").textContent;
+      //this.nomStation = document.getElementById("nomStation").textContent;
+      // si les champs nom et prénom sont remplis, apparition du canvas
       if (this.surname.length > 0 && this.name.length > 0) {
         this.firmBox = new Firm(this.reservation_box_id)
         this.divForm.style.height = "460px";
@@ -43,15 +43,15 @@ class ReservationManager {
         this.divResa.style.textAlign = "center";
       }
       //ceci vide la div de confirmationRésa lorsque le compteur est à 0
-      document.addEventListener(timerEnded,this.clearReservation.bind(this))
+      document.addEventListener("timerEnded",this.clearReservation.bind(this))
       })
       //addlistener pour écouter le canvas à l'aide l'evènement personnalisé
-      document.addEventListener(firmedEvent,()=>{
+      document.addEventListener("firmedEvent",()=>{
         this.setReservation()
       });
     }//fermeture addlisteners
 
-
+// fonction pour remettre à zero les formulaires , appelée
     resetForms(){
            document.getElementById("infosResa").style.display = "none";
            this.divResa.innerHTML="";
@@ -64,24 +64,14 @@ class ReservationManager {
            adresse.textContent = "";
            places.textContent = "";
            velos.textContent = "";
-           this.localName=    localStorage.setItem("name", this.name)
-           this.localSurname = localStorage.setItem("surname", this.surname)
-           this.name = localStorage.getItem("name");
-           this.surname = localStorage.getItem("surname")
      };
 
-
-
-
-
-    // addlistener pour écouter le canvas à l'aide de l'evenement personnalisé -firmedEvent déclaré dans firm
-    SetReservation(){
+    setReservation(){
       //console.log("event ecouté")
           const blank = document.createElement("canvas");// creation d'un canvas vide, à comparer au canvas de mon appli
           blank.width = this.firmBox.canvas.width;
           blank.height = this.firmBox.canvas.height;
-          // rajout d'une condition pou roblier à selectionner un marqueur Leaflet
-
+          // rajout d'une condition pour obliger à selectionner un marqueur Leaflet
           if (adresse.textContent ===""){
             this.label.style.borderColor = "red";
             this.label.style.borderWidth = "2px";
@@ -89,29 +79,23 @@ class ReservationManager {
             alert("N'oubliez pas de selectionner une station");
           }else{
             this.label.style.borderColor = "transparent";
-          }
-          if (blank.toDataURL() == this.firmBox.canvas.toDataURL()) {
+          }// comparaison du canvas avec le canvas de reference blanc
+          if (blank.toDataURL() === this.firmBox.canvas.toDataURL()) {
             alert("N'oubliez pas de signer votre réservation"); // Message en cas de canvas vide
-            //et dispatcher l'event firmedEvent
           }else{
-            localStorage.setItem(name, this.name);
-            localStorage.setItem(surname, this.surname)
+            localStorage.setItem("name", this.name);
+            localStorage.setItem("surname", this.surname)
             // on fait réapparaitre la div de confirmation de résa qui a été masquée en app.js ligne 2
               document.getElementById("infosResa").style.display = "block";
             // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
-            this.endReservation =  Date.now()+ 1200000;
-              //stocker le nom de la station choisie et l'heure de la résa, ligne 110 et 135
+            this.endReservation =  Date.now()+ 5000;
+              //stocker le nom de la station choisie et l'heure de fin de la résa
             this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
             this.stationChoisie = sessionStorage.setItem("stationChoisie", this.nomStation)
-            this.affichageSectionInfosResa();
+            //this.affichageSectionInfosResa();
             this.countdown();
             }
-    });
-  } //fermeture addlistener
-
-
-  // Ceci enlève le canvas et  remet les formulaires details de la station et utilisateur à blanc
-
+    }
 
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
@@ -133,7 +117,9 @@ class ReservationManager {
         }
         // ajout de ces informations dans la section HTML
         this.counterReservation.textContent = minutes + 'mn' + seconds + 's ';
-      } else { //s'arrete à 0
+        //this.addressInfosResa.textContent= sessionStorage.getItem("stationChoisie")
+      } else { //s'arrete à 0, on dispache un customEvent et on l'ecoute dans les addListener
+        // le contenu de timerEnded est defini ligne 46 comme étant la fonction clearReservation
           let event = new Event(timerEnded,{
           bubbles:true
           });
@@ -142,39 +128,48 @@ class ReservationManager {
     }, 1000);
   }
   //faire réapparaître la div section infosResa etlui imputer les infos de la résa
-  affichageSectionInfosResa() {
-    document.getElementById("infosResa").style.display = "block";
-    this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie")
-  }
+
 
   //Pour ré-initialiser la div d'information de reservation  une fois le temps écoulé
   clearReservation() {
+    //on clear pour cesser d'appeler le timer
     clearInterval(this.intervalId)
     this.sectionInfosResa.innerHTML = "";
     // on enlève le stockage des donnée et le décompte
     sessionStorage.removeItem("tempsEcoulé");
     sessionStorage.removeItem("stationChoisie");
+    // on fait apparaître un message d'expiration
     var messageExpiration = document.createElement("h2");
     this.sectionInfosResa.appendChild(messageExpiration)
     messageExpiration;
     messageExpiration.textContent = "Votre réservation a expiré";
-// cest ce qui permet de ResetForm en dehors de l'interavlle que l'on a arrêté préalamlement
+// Esnuite, on peut remettre les formulaires de résa  en dehors de l'intervalle que l'on a arrêté préalablement
     setTimeOut( ()=>{
       this.resetForms()
     },2000)
   }
-  retrieveReservation({
-    this.nomStation = sessionStorage.getItem(stationChoisie)?sessionStorage.getItem(stationChoisie):undefined;
-    this.surname = localStorage.getItem(surname)?localStorage.getItem(surname):undefined;
-    this.name = localStorage.getItem(name)?localStorage.getItem(name):undefined;
+
+  retrieveReservation(){
+    //Mise en place d'une condition ternaire, voir si on a des elements dans le session storage
+    this.nomStation = sessionStorage.getItem("stationChoisie")?sessionStorage.getItem("stationChoisie"):undefined;
+   this.counterReservation= sessionStorage.getItem("timeOut")?sessionStorage.getItem("timeOut"): undefined
+    this.surname = localStorage.getItem("surname")?localStorage.getItem("surname"):undefined;
+    this.name = localStorage.getItem("name")?localStorage.getItem("name"):undefined;
 if(this.surname!== undefined && this.name!==undefined){
-  document.getElementById(prenom_utilisateur).value =this.surname;
-  document.getElementById(nom_utilisateur).value = this.name;
+  document.getElementById("prenom_utilisateur").value =this.surname;
+  document.getElementById("nom_utilisateur").value = this.name;
 }
-if(this.nomStation!==undefined){
+if(this.nomStation!==undefined && this.counterReservation!==undefined){
   this.affichageSectionInfosResa()
 }
+  }
+
+  affichageSectionInfosResa() {
+    document.getElementById("infosResa").style.display = "block";
+    this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie")
+    this.compteurReservation.textContent = sessionStorage.getItem("timeOut");
 
   }
+
 
 }

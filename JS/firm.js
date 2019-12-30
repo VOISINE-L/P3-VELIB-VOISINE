@@ -20,8 +20,10 @@ class Firm {
   setUpCanvas() {
     let canvas = document.createElement("canvas");
     canvas.style.backgroundColor = "white";
-    canvas.style.width = "500px"
-    canvas.style.height = "150px";
+    canvas.width = 500;
+    canvas.height = 150;
+    //canvas.style.width = "500px"
+    //canvas.style.height = "150px";
     canvas.id = "canvas";
     return canvas; //cf ligne 5
   }
@@ -37,9 +39,7 @@ class Firm {
   addListeners() {
     this.canvas.addEventListener("mousedown", (e) => {
 	  this.drawing = true;
-	  let x = e.offsetX;
-	   let y = e.offsetY;
-      this.lastPos = {x, y}
+	  this.mousePos = this.getMousePos(this.canvas, e);
     }, false)
 
     this.canvas.addEventListener("mouseup", () => { // arrêt du dessin
