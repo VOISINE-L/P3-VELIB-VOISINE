@@ -251,16 +251,13 @@ nav {
 
 span#nomStation,
 span#velos,
-span#places{
-    padding-left: 30px;
+span#places,
+sapn#adresse{
+
     font-weight: bold;
-    overflow: break-word;
-
-
+padding-left : 20px;
 }
-span#adresse{
-    padding-left: 30px;
-}
+
 
 #div_resa {
     background-color: white;
@@ -276,7 +273,14 @@ span#adresse{
     text-decoration: underline
 }
 
+#form1 p{
+  display: flex;
+}
 
+#form1 span#label {
+  width: 180px;
+  padding-left:2Opx;
+}
 #form1 #form2 #form3 {
     position: relative;
     padding-left: 40px;

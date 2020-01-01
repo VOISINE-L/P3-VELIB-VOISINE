@@ -2,13 +2,7 @@
 document.getElementById("infosResa").style.display="none";
 
 class App {
-  /**
-   *
-   * @param {String} mapId
-   * @param {Array[Double, Double]} mapCenter
-   *
-   * mapCenter is of [Latitud, Longitud]
-   */
+
   constructor(mapId, mapCenter, icone) {
     this.carte = this.setMap(mapId, mapCenter);
     this.clusters = L.markerClusterGroup();
@@ -21,7 +15,7 @@ class App {
     this.fermeture = document.createElement("div");
     this.imageFermeture = document.createElement("img");
     this.messageFermeture = document.createElement("button");
-    this.reservationManager = new ReservationManager("div_resa");// on relie à Reservation.js, on appelle ligne 106
+    this.reservationManager = new ReservationManager("div_resa");// on relie à Reservation.js, on l'y appelle ligne 106
 
   }
   //Fonction pour déclarer la carte
