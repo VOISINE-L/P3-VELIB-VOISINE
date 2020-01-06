@@ -1,7 +1,7 @@
 // Pour eviter à la div de confirmationde drésa d'apparaître avant le listener sur le bouton Canvas
 document.getElementById("infosResa").style.display="none";
 
-class App {
+class Map {
 
   constructor(mapId, mapCenter, icone) {
     this.carte = this.setMap(mapId, mapCenter);
@@ -21,6 +21,7 @@ class App {
   //Fonction pour déclarer la carte
   setMap(mapId, mapCenter) {
     var carte = L.map(mapId).setView(mapCenter, 13);
+    // ajout de tuiles sur la carte
     L.tileLayer(' http://www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
       minZoom: 12,
       maxZoom: 17,
@@ -28,13 +29,18 @@ class App {
     }).addTo(carte);
     return carte
   }
-  //Fonction pour afficher les marqueurs
+  //Fonction pour afficher les marqueurs d'après l'API JC DECAUX
   setMarkersFromApi(url) {
     ajaxGet(url, (callback) => {
-      //console.log(callback)
+      console.log(callback)
+      // creation d'un tableau du paramètre stations
       let stations = JSON.parse(callback)
+      console.log(stations)
+      // recuperation du tableau JC DECAUX
+      // création d'une variable marqueur
       for (const station of stations) {
-        let marqueur = this.creerMarqueurCarte(station); //on récupère le marqueur pour la méthode addlistenersCarte Lesmarqueurs se créent
+        let marqueur = this.creerMarqueurCarte(station);
+        //on récupère le marqueur pour la méthode addlistenersCarte Lesmarqueurs se créent
         this.addlistenersCarte(marqueur)
       }
     });
@@ -55,22 +61,24 @@ class App {
     this.status = station.status;
     return marqueurCarte;
   }
+
+
   //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction, ici ligne 32
-  addlistenersCarte(param) {
+  addlistenersCarte(marqueur) {
     let places = document.getElementById("places")
     let velos = document.getElementById("velos")
     let adresse = document.getElementById("adresse")
     let nomStation = document.getElementById("nomStation")
 
-    param.addEventListener("click", () => {
-      adresse.textContent = param.adresseStation
-      places.textContent = param.placesDispo
-      velos.textContent = param.velosDispo
-      nomStation.textContent = param.nomStation;
+    marqueur.addEventListener("click", () => {
+      adresse.textContent = marqueur.adresseStation
+      places.textContent = marqueur.placesDispo
+      velos.textContent = marqueur.velosDispo
+      nomStation.textContent = marqueur.nomStation;
       this.divForm.style.height = "460px"
 
       //GESTION DES ELEMENTS DE MESSAGE EN CAS DE STATION FERMEE OU VELO INDISPO
-      if (this.status != "OPEN" || param.velosDispo === 0) {
+      if (this.status !== "OPEN" || marqueur.velosDispo === 0) {
         this.divSectionCarte.style.height = "auto";
         this.divForm.style.height = "590px";
         this.fermeture.id = "form3";
@@ -98,7 +106,7 @@ class App {
           adresse.textContent = "";
           nomStation.textContent ="";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
-      } else { //APPEL DU CANVAS SIGNATURE
+      } else { //appel de la procédure de réservation ligne 18
         this.reservationManager;
 
        }

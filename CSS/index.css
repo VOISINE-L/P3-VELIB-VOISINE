@@ -42,23 +42,18 @@
     font-weight: normal;
     font-style: normal;
 }
-
 body {
-
     margin: 0px;
     font-size: 1em;
 }
-
 #page_principale {
     font-family: roboto;
     font-size: 1em;
     width: 100%;
 }
-
 #header_image {
     float: left;
 }
-
 #entete {
     display: flex;
     justify-content: space-around;
@@ -74,7 +69,6 @@ body {
 }
 
 #entete nav a {
-
     text-decoration: none;
     color: black;
     font-size: 1.2em;
@@ -87,27 +81,22 @@ body {
     font-weight: bold;
     font-size: 1.2em;
 }
-
 nav {
     margin-left: 450px;
     margin-top: 52px;
 }
-
 #entete nav ul {
     display: flex;
 }
-
 #entete nav li {
     margin-right: 20px;
     font-size: 1.2em;
     list-style: none
 }
-
 #section_carousel {
     width: 100%;
     /*background-color: black;*/
 }
-
 #container_carousel {
     display: flex;
     text-align: center;
@@ -117,16 +106,12 @@ nav {
     border: solid 2px white;
     height: 800px;
 }
-
 #image_carousel {
     margin: 0px;
     width: 100%;
     margin-top: 110px;
-
 }
-
 #boite {
-
     position: absolute;
     bottom: 300px;
     right: 200px;
@@ -137,15 +122,12 @@ nav {
     height: 185px;
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 #titre_carousel {
     color: white;
     font-size: 2em;
     font-family: robotobold;
-
     text-decoration: underline;
 }
-
 #texte_carousel {
     background-color: transparent;
     font-size: 1.6em;
@@ -156,9 +138,6 @@ nav {
     padding-right: 30px;
     padding-left: 30px;
 }
-
-
-
 #image_carousel img {
     width: 100%;
 
@@ -383,6 +362,11 @@ img {
     height: 120px;
     background-color:#e2be4b;
 
+}
+section#infosResa {
+    background-color: #e2be4c;
+    border: solid 2px #b3b3b3;
+    border-radius: 25px;
 }
 
 

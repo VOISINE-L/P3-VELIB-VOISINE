@@ -1,3 +1,27 @@
+// on declare les diapos
+let carousel = [{
+    image: "images_sliders/grandes/image.jpg",
+    titre: "ETAPE 1: ",
+    texte: "Vous choisissez une station..."
+  },
+  {
+    image: "images_sliders/grandes/image3.jpg",
+    titre: "ETAPE 2: ",
+    texte: "...une signature suffit pour bloquer votre réservation..."
+  },
+  {
+    image: " images_sliders/grandes/1bis.jpg",
+    titre: "ETAPE 3: ",
+    texte: " ... ainsi un vélo vous attend durant 20 mn dans la station de votre choix!"
+  },
+  {
+    image: "images_sliders/grandes/tandem.jpeg",
+    titre: "ETAPE 4: ",
+    texte: "Et ensuite, à vous la Vélo'Cité... tout simplement!"
+  }
+];
+
+
 class Slider {
   constructor(objets, container) {
     this.objets = objets;
@@ -9,6 +33,8 @@ class Slider {
     this.pause = true;
     this.image;
     this.container = document.getElementById(container);
+    this.init();
+
   }
 
   ajouter(objet) {
@@ -43,35 +69,46 @@ class Slider {
     figcaptionCarousel.appendChild(texteCarousel);
     this.initial = false;
   }
+
   init() {
     if (this.initial === true) {
       this.indice = 0;
+    }
+      // passe en paramètre les objets créés par la methode ajouter par leur indice
       this.ajouter(this.objets[this.indice]);
+      // met en place un interval pour lancer le slider toute les 5 s
       this.lancerAutoSlider();
+      // met en place les commandes sur les flèches et le clavier
       this.addlisteners()
 
-    }
+
   }
 
   avancerSlider() {
+    // augmente l'indice jusque la fin du tableau
     if ((this.indice >= 0) && (this.indice < this.objets.length - 1)) {
       this.indice++;
       //this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte)
+      //sinon remet l'indice à 0
     } else {
       this.indice = 0;
       //this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte)
     }
+    //appelle la methode ajouter et lui passe tous les items du tableau
     this.ajouter(this.objets[this.indice])
   }
 
   reculerSlider() {
+    // reduit l'indice jusque la fin du tableau
     if ((this.indice > 0) && (this.indice <= this.objets.length - 1)) {
       this.indice--;
-      //this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte);
+      // alternatif: this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte);
+      // sinon passe au dernier item du tableau
     } else {
       this.indice = this.objets.length - 1;
       //this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte)
     }
+      //appelle la methode ajouter et lui passe tous les items du tableau
     this.ajouter(this.objets[this.indice]);
   }
 
@@ -91,6 +128,7 @@ class Slider {
       this.reculerSlider();
     });
     window.addEventListener("keydown", (e) => {
+
       switch (e.code) {
         case "ArrowLeft":
           this.reculerSlider()
@@ -105,12 +143,13 @@ class Slider {
           this.avancerSlider()
           break;
         case "Space":
+        // si
           if (this.pause === true) {
             this.stopperAutoSlider()
             this.pause = false;
+            //sinon, si j'ai pause === false,
           } else {
             this.pause = true;
-            clearInterval(this.sequence);
             this.lancerAutoSlider()
           }
           break;
@@ -118,3 +157,5 @@ class Slider {
     });
   }
 }
+//on instancie le slider
+let slider = new Slider(carousel, "container_carousel");
