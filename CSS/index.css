@@ -1,241 +1,212 @@
+
+
 @font-face {
-    font-family: 'fontawesomeregular';
-    src: url('fontawesome-webfont-webfont.woff2') format('woff2'),
-        url('fontawesome-webfont-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'roboto';
+  src: url('fonts/multi_roboto/Roboto-Regular-webfont.eot');
+  src: url('fonts/multi_roboto/RÁoboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/multi_roboto/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'roboto';
-    src: url('fonts/multi_roboto/Roboto-Regular-webfont.eot');
-    src: url('fonts/multi_roboto/RÁoboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-        url('fonts/multi_roboto/Roboto-Regular-webfont.woff2') format('woff2'),
-        url('fonts/multi_roboto/Roboto-Regular-webfont.woff') format('woff'),
-        url('fonts/multi_roboto/Roboto-Regular-webfont.ttf') format('truetype'),
-        url('fonts/multi_roboto/Roboto-Regular-webfont.svg#robotoregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'robotobold';
+  src: url('fonts/multi_roboto/Roboto-Bold-webfont.eot');
+  src: url('fonts/multi_roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/multi_roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'robotobold';
-    src: url('fonts/multi_roboto/Roboto-Bold-webfont.eot');
-    src: url('fonts/multi_roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-        url('fonts/multi_roboto/Roboto-Bold-webfont.woff2') format('woff2'),
-        url('fonts/multi_roboto/Roboto-Bold-webfont.woff') format('woff'),
-        url('fonts/multi_roboto/Roboto-Bold-webfont.ttf') format('truetype'),
-        url('fonts/multi_roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'robotoblack';
-    src: url('fonts/multi_roboto/Roboto-Black-webfont.eot');
-    src: url('fonts/multi_roboto/Roboto-Black-webfont.eot?#iefix') format('embedded-opentype'),
-        url('fonts/multi_roboto/Roboto-Black-webfont.woff2') format('woff2'),
-        url('fonts/multi_roboto/Roboto-Black-webfont.woff') format('woff'),
-        url('fonts/multi_roboto/Roboto-Black-webfont.ttf') format('truetype'),
-        url('fonts/multi_roboto/Roboto-Black-webfont.svg#robotoblack') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'robotoblack';
+  src: url('fonts/multi_roboto/Roboto-Black-webfont.eot');
+  src: url('fonts/multi_roboto/Roboto-Black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/multi_roboto/Roboto-Black-webfont.woff') format('woff'),
+    url('fonts/multi_roboto/Roboto-Black-webfont.ttf') format('truetype'),
+    url('fonts/multi_roboto/Roboto-Black-webfont.svg#robotoblack') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-
-    margin: 0px;
-    font-size: 1em;
+  margin: 0px;
+  font-size: 1em;
 }
 
 #page_principale {
-    font-family: roboto;
-    font-size: 1em;
-    width: 100%;
+  font-family: roboto;
+  font-size: 1em;
+  width: 100%;
 }
 
 #header_image {
-    float: left;
+  float: left;
 }
 
 #entete {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 113px;
-    position: fixed;
-    top: 0px;
-    z-index: 3;
-    width: 100%;
-    background: white;
-    border-bottom: 4px solid black;
-    border-radius: 0 0 3px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 113px;
+  position: fixed;
+  top: 0px;
+  z-index: 3;
+  width: 100%;
+  background: white;
+  border-bottom: 4px solid black;
+  border-radius: 0 0 3px;
 }
 
 #entete nav a {
-
-    text-decoration: none;
-    color: black;
-    font-size: 1.2em;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2em;
 }
 
 #entete nav a:hover {
-    color: #e2be4b;
-    padding-top: 25px;
-    font-family: roboto;
-    font-weight: bold;
-    font-size: 1.2em;
+  color: #e2be4b;
+  padding-top: 41px;
+  font-family: roboto;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-top: solid 3px #e2be4b;
 }
 
 nav {
-    margin-left: 450px;
-    margin-top: 52px;
+  margin-left: 450px;
 }
 
 #entete nav ul {
-    display: flex;
+  display: flex;
 }
 
 #entete nav li {
-    margin-right: 20px;
-    font-size: 1.2em;
-    list-style: none
+  margin-right: 20px;
+  font-size: 1.2em;
+  list-style: none
 }
 
 #section_carousel {
-    width: 100%;
-    /*background-color: black;*/
+  width: 100%;
+  /*background-color: black;*/
 }
 
 #container_carousel {
-    display: flex;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-    border-radius: 50px;
-    border: solid 2px white;
-    height: 800px;
+  display: flex;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50px;
+  border: solid 2px white;
+  height: 800px;
 }
 
 #image_carousel {
-    margin: 0px;
-    width: 100%;
-    margin-top: 110px;
-
+  margin: 0px;
+  width: 100%;
+  margin-top: 110px;
 }
 
 #boite {
-
-    position: absolute;
-    bottom: 300px;
-    right: 200px;
-    width: 48%;
-    border-style: solid;
-    border-color: rgba(226, 190, 75, 0.57);
-    border-radius: 13px;
-    height: 185px;
-    background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 300px;
+  right: 200px;
+  width: 48%;
+  border-style: solid;
+  border-color: rgba(226, 190, 75, 0.57);
+  border-radius: 13px;
+  height: 185px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #titre_carousel {
-    color: white;
-    font-size: 2em;
-    font-family: robotobold;
-
-    text-decoration: underline;
+  color: white;
+  font-size: 2em;
+  font-family: robotobold;
+  text-decoration: underline;
 }
 
 #texte_carousel {
-    background-color: transparent;
-    font-size: 1.6em;
-    color: white;
-    font-family: roboto;
-    font-weight: bold;
-    font-style: italic;
-    padding-right: 30px;
-    padding-left: 30px;
+  background-color: transparent;
+  font-size: 1.7em;
+  color: white;
+  font-style: italic;
+  padding-right: 30px;
+  padding-left: 30px;
 }
-
-
 
 #image_carousel img {
-    width: 100%;
-
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
-
 #chevron1 {
-    display: flex;
-    position: absolute;
-    left: -8.56px;
-    top: calc(50% + 17.5px);
-    border-radius: 50px;
-    padding-left: 11.56px;
-    padding-right: 11.56px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    font-size: 19px;
-    background: #0000008a;
-    color: white;
+  display: flex;
+  position: absolute;
+  left: -8.56px;
+  top: calc(50% + 17.5px);
+  border-radius: 50px;
+  padding-left: 11.56px;
+  padding-right: 11.56px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 19px;
+  background: #0000008a;
+  color: white;
 }
 
 #chevron2 {
-    display: flex;
-    position: absolute;
-    right: -8.56px;
-    top: calc(50% + 17.5px);
-    border-radius: 50px;
-    padding-left: 11.56px;
-    padding-right: 11.56px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    font-size: 19px;
-    background: #0000008a;
-    color: white;
+  display: flex;
+  position: absolute;
+  right: -8.56px;
+  top: calc(50% + 17.5px);
+  border-radius: 50px;
+  padding-left: 11.56px;
+  padding-right: 11.56px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 19px;
+  background: #0000008a;
+  color: white;
 }
 
 #section_carte {
-    display: flex;
-    width: 100%;
-    height: 650px;
-    padding-top: 50px;
-    /*background-color: black*/
+  display: flex;
+  width: 100%;
+  height: 650px;
+  padding-top: 50px;
+  /*background-color: black*/
 }
 
 #carte {
-
-    z-index: 0;
-    opacity: 0.8;
-    height: 600px;
-    border: 3px solid white;
-    border-radius: 0px;
-    flex: 60;
-    margin: 10px;
-    position: relative;
-
-
+  z-index: 0;
+  opacity: 0.8;
+  height: 600px;
+  border: 3px solid white;
+  border-radius: 0px;
+  flex: 60;
+  margin: 10px;
+  position: relative;
 }
 
 #legende {
-    color: #e2be4b;
-    font-size: 1.4em;
-    position: relative;
-    bottom: 9px;
+  color: #e2be4b;
+  font-size: 1.4em;
+  position: relative;
+  bottom: 9px;
 }
 
 #legende2 {
-    color: #e2be4b;
-    font-size: 1.4em;
-    position: relative;
-    bottom: 9px;
-
+  color: #e2be4b;
+  font-size: 1.4em;
+  position: relative;
+  bottom: 9px;
 }
+
 /*p{
   display:flex;
 }*/
-
 #div_form {
   border: 4px solid #e2be4b;
   border-radius: 15px;
@@ -251,48 +222,48 @@ nav {
 
 span#nomStation,
 span#velos,
-span#places{
-    padding-left: 30px;
-    font-weight: bold;
-    overflow: break-word;
+span#places,
+sapn#adresse {
+  font-weight: bold;
 
-
-}
-span#adresse{
-    padding-left: 30px;
 }
 
 #div_resa {
-    background-color: white;
-    display: flex;
-    text-align: center;
-    margin-top: 25px;
+  background-color: white;
+  display: flex;
+  text-align: center;
+  margin-top: 25px;
 }
 
 .centre {
-    text-align: center;
-    font-size: 1.3em;
-    color: black;
-    text-decoration: underline
+  text-align: center;
+  font-size: 1.3em;
+  color: black;
+  text-decoration: underline
 }
 
+#form1 p {
+  display: flex;
+}
+
+#form1 span#label {
+  width: 180px;
+  padding-left: 2Opx;
+}
 
 #form1 #form2 #form3 {
-    position: relative;
-    padding-left: 40px;
-    font-size: 1.2em;
+  position: relative;
+  padding-left: 40px;
+  font-size: 1.2em;
 }
 
 #form2 {
-    width: 100%;
+  width: 100%;
 }
 
 #form3 {
-
-    width: 100%;
-
+  width: 100%;
 }
-
 
 input#nom_utilisateur,
 input#prenom_utilisateur {
@@ -308,143 +279,152 @@ input#prenom_utilisateur {
 
 input#nom_utilisateur,
 input#prenom_utilisateur {
-    background-color: #909090;
-    opacity: 0.7;
-    text-align: center;
+  background-color: #909090;
+  opacity: 0.7;
+  text-align: center;
 }
 
 .submit {
-    background-color: #e2be4b;
-    color: black;
-    text-decoration: none;
-    font-family: 'robotobold';
-    font-size: 1.3em;
-    border-radius: 15px;
-    position: relative;
-    width: 36%;
-    height: 40px
+  background-color: #e2be4b;
+  color: black;
+  text-decoration: none;
+  font-family: 'robotobold';
+  font-size: 1.3em;
+  border-radius: 15px;
+  position: relative;
+  width: 36%;
+  height: 40px
 }
-#pSubmit{
-  display:block;
+
+#pSubmit {
+  display: block;
 }
 
 label {
-
-    padding-left:20px;
-    font-family: roboto;
-    font-size: 1.1em;
-    display: inline-block;
-    width: 200px;
+  padding-left: 20px;
+  font-family: roboto;
+  font-size: 1.1em;
+  display: inline-block;
+  width: 200px;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 #canvas {
-
-    border-radius: 25px;
-
-    border: solid 1px #e2be4b
+  border-radius: 25px;
+  border: solid 1px #e2be4b
 }
 
 #messageFermeture {
-    bottom: inherit;
-    align-items: left;
-    /* display: block; */
+  bottom: inherit;
+  align-items: left;
+  /* display: block; */
+  position: relative;
+  align-items: right;
+  margin-bottom: 22px;
+  /* margin-top: 20px; */
+  height: 41px;
+  border-radius: 15px;
+  background-color: #909090;
+  font-size: 1.2em;
+  color: white;
+  font-family: roboto;
+  font-weight: bold;
+}
+
+#set {
+  background-color: #e2be4b;
+  color: black;
+  text-decoration: none;
+  font-family: 'robotobold';
+  font-size: 1.3em;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+#detailsResa {
+  width: 100%;
+  height: 120px;
+  background-color: #e2be4b;
+}
+
+section#infosResa {
+  background-color: #e2be4c;
+  border: solid 2px #b3b3b3;
+  border-radius: 25px;
+  font-family: roboto;
+  align-items: center;
+  display: block;
+  width: 60%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em
+}
+
+button#annulation {
+  width: 20%;
+  color: black;
+  text-decoration: none;
+  font-family: 'roboto';
+  font-size: 1.2em;
+  height: 40px;
+}
+
+
+@media all and (max-width: 900px) {
+  #container_carousel {
+    display: flex;
+    overflow: hidden;
     position: relative;
-    align-items: right;
-    margin-bottom: 22px;
-    /* margin-top: 20px; */
-    height: 41px;
-    border-radius: 15px;
-    background-color: #909090;
-    font-size: 1.2em;
-    color: white;
-    font-family: roboto;
-    font-weight: bold;
-}
-#set{
-    background-color: #e2be4b;
-    color: black;
-    text-decoration: none;
-    font-family: 'robotobold';
-    font-size: 1.3em;
-    border-radius: 15px;
-    margin: 15px;
-
-}
-#detailsResa{
-    width:100%;
-    height: 120px;
-    background-color:#e2be4b;
-
-}
-
-
-
-
-
-
-
-
-
-
-@media all and (max-width: 900px)
-{
-
-    #container_carousel{
-      display: flex;
-      overflow: hidden;
-      position: relative;
-      border-radius: 50px;
-      border: solid 2px white;
-      height: auto;
+    border-radius: 50px;
+    border: solid 2px white;
+    height: auto;
   }
-    #image_carousel {
-      margin: 0px;
-      width: 100%;
-      margin-top: 110px;
-    }
 
-    #section_carte {
+  #image_carousel {
+    margin: 0px;
+    width: 100%;
+    margin-top: 110px;
+  }
+
+  #section_carte {
     display: inline;
   }
-  .submit{
-    width:20%;
+
+  .submit {
+    width: 20%;
   }
-  #set{
-    display:flex;
-    margin-left:450px;
+
+  #set {
+    display: flex;
+    margin-left: 450px;
   }
 
   #boite {
-  position: absolute;
-  bottom: 150px;
-  right: 128px;
-  width :59%;
-
+    position: absolute;
+    bottom: 150px;
+    right: 128px;
+    width: 59%;
   }
+
   #entete nav ul {
-  display:flex;
+    display: flex;
   }
+
   nav {
-      margin-left: 0px;
-      margin-top: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
   }
-}
 
-
-
-@media all and (max-width: 800px)
- {
-
-}
-@media all and (max-width: 750px)
-{
-
-}
-@media all and (max-width: 450px)
- {
-
+  section#infosResa {
+    width: 100%;
+    margin-top: 20px;
   }
+
+}
+
+@media all and (max-width: 750px) {}
+
+@media all and (max-width: 450px) {}
