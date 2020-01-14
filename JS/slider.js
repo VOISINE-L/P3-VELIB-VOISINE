@@ -1,3 +1,5 @@
+
+
 class Slider {
 
   // les paramètres sont le tableau JSON du fichier LaunchObjects et sa div parent container_carousel créée en HTML.
@@ -12,6 +14,7 @@ class Slider {
     this.image;
     this.container = document.getElementById(container);
     this.init();
+
   }
 // methode qui créee en JS le diaporama image  et les  textes d'après les items du tableau
   ajouter(objet) {
@@ -46,17 +49,19 @@ class Slider {
     figcaptionCarousel.appendChild(texteCarousel);
     this.initial = false;
   }
-// appelée dès le constructor, elle lance automatiquement le slider
+
   init() {
     if (this.initial === true) {
       this.indice = 0;
     }
-    // passe en paramètre les objets créés par la methode ajouter par leur indice
-    this.ajouter(this.objets[this.indice]);
-    // met en place un interval pour lancer le slider toute les 5 s
-    this.lancerAutoSlider();
-    // met en place les commandes sur les flèches et le clavier
-    this.addlisteners()
+      // passe en paramètre les objets créés par la methode ajouter par leur indice
+      this.ajouter(this.objets[this.indice]);
+      // met en place un interval pour lancer le slider toute les 5 s
+      this.lancerAutoSlider();
+      // met en place les commandes sur les flèches et le clavier
+      this.addlisteners()
+
+
   }
 
 //
@@ -82,7 +87,7 @@ class Slider {
       this.indice = this.objets.length - 1;
       //this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte)
     }
-    //appelle la methode ajouter et lui passe tous les items du tableau
+      //appelle la methode ajouter et lui passe tous les items du tableau
     this.ajouter(this.objets[this.indice]);
   }
 

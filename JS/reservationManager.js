@@ -1,11 +1,11 @@
+//constructor appelé sur Div_resa dans app.js
 class ReservationManager {
-  constructor(reservation_box_id) { // ce gestionnaire de reservation instancié sur la div_resa en map.js, ligne 18 du constructor
+  constructor(reservation_box_id) {//instancié sur la div_resa en map.js, ligne 18 du constructor
     this.reservation_box_id = reservation_box_id;
     this.nomStation = undefined;
     this.surname = undefined;
     this.name = undefined;
     this.address = undefined;
-    this.divResa = document.getElementById("div_resa");
     this.EndReservation = undefined; // heure de fin de la reservation
     this.firmBox = undefined; //ex DivForm
     this.firm = undefined; // signature
@@ -20,6 +20,7 @@ class ReservationManager {
     this.label = document.getElementById("label");
     this.messageExpiration = document.createElement("h2");
     this.countdown;
+    this.divResa = document.getElementById("div_resa");
     this.addListener();
     // appelé dès le début pour pouvoir vérifier la présence d'une résa en cours dans l'API WEBSTORAGE
     this.retrieveReservation();
@@ -40,23 +41,27 @@ class ReservationManager {
         this.divForm.style.height = "460px";
         this.divForm.style.top = "calc(50% - 260px)";
         this.divResa.style.textAlign = "center";
+
+
       } else {
         this.userForm.elements.prenom_utilisateur.style.backgroundColor = "red";
         this.userForm.elements.nom_utilisateur.style.backgroundColor = "red";
       }
       //Evenement pour vider la div de confirmationRésa lorsque le compteur est à 0
-      document.addEventListener("timerEnded", this.clearReservation.bind(this));
+      document.addEventListener("timerEnded", this.clearReservation.bind(this), console.log("1"));
     })
-    //evènements pour écouter le canvas à l'aide d'un evènement personnalisé
+    //evènements pour écouter le canvas à l'aide l'evènement personnalisé créé dans
+    // le fichier canvas .js, dans le setUpButtonCAnvas
     document.addEventListener("firmedEvent", () => {
       this.setReservation();
-      this.messageDiv = document.createElement("H2")
-      this.messageDiv.class = "centre";
-      this.messageDiv.textContent = "Signez "
-    this.messageDiv.before(this.divResa)
-    });
-  } //fermeture addlisteners
 
+    });
+    document.addEventListener("resetReservation",()=>{
+        this.buttonResetReservation.textContent = "Annuler la reservation";
+        this.clearReservation();
+
+    })
+  } //fermeture addlisteners
   setReservation() {
     // creation d'un canvas vide, à comparer au canvas de mon appli
     const blank = document.createElement("canvas");
@@ -115,9 +120,11 @@ class ReservationManager {
     places.textContent = "";
     velos.textContent = "";
     this.messageExpiration.textContent = "";
+
   };
 
   countdown() {
+    //Rajout de 20mn à l'heure de début de réservation
     this.intervalId = setInterval(() => { //	lance la function à executer chaque seconde
       //var currentHour = Date.now();
       // Affichage de la soustraction de la date enregistrée dans le local storage - la date au moment de l’exécution de la fonction
@@ -128,7 +135,7 @@ class ReservationManager {
       if (decompte > 0) {
         //math floor pour renvoyer au plus grand entier issu du calcul
         // du reste de la divison du décompte en secondes par 3600, le tout mutiplie par §0 pour mettre en minutes
-        var minutes = Math.floor(decompte % 3600 / 60);
+        var minutes = Math.floor(decompte % 3600/60);
         var seconds = Math.floor(decompte % 60);
         // pour rajouter un zéro lorsque le décompte devient un chiffre
         if (minutes < 10) {
@@ -165,16 +172,16 @@ class ReservationManager {
     this.messageExpiration;
     this.messageExpiration.textContent = "Votre réservation a expiré";
     this.sectionInfosResa.appendChild(this.messageExpiration)
+
     // Esnuite, on peut remettre les formulaires de résa  en dehors de l'intervalle que l'on a arrêté préalablement
     setTimeout(() => {
       this.resetForms()
     }, 2000)
+
   }
 
   retrieveReservation() {
-    //Mise en place d'une condition ternaire, voir si on a des elements dans le session/local storage
-    //sinon vaut undefined
-    //lance egalement le decompte
+    //Mise en place d'une condition ternaire, voir si on a des elements dans le session storage, sinon vaut undefined
     this.timeOut = sessionStorage.getItem("timeOut") ? sessionStorage.getItem("timeOut") : undefined
     this.nomStation = sessionStorage.getItem("stationChoisie") ? sessionStorage.getItem("stationChoisie") : undefined;
     this.surname = localStorage.getItem("surname") ? localStorage.getItem("surname") : undefined;
@@ -186,6 +193,7 @@ class ReservationManager {
     }
     if (this.nomStation !== undefined && this.counterReservation !== undefined) {
       this.affichageSectionInfosResa()
+
     }
   }
 

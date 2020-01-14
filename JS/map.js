@@ -29,20 +29,18 @@ class Map {
     }).addTo(carte);
     return carte
   }
-
-  //Fonction pour créer les marqueurs d'après une API
-  // instancie sur JC DECAUX e; LaunchObjets L 38
+  //Fonction pour afficher les marqueurs d'après l'API JC DECAUX
   setMarkersFromApi(url) {
     ajaxGet(url, (callback) => {
       console.log(callback)
-      // creation d'un tableau de la reponse JCDECAUX
+      // creation d'un tableau du paramètre stations
       let stations = JSON.parse(callback)
       console.log(stations)
-
-      // création d'une variable marqueur qui appelle une methode s'applique sur chaque item du tableau
+      // recuperation du tableau JC DECAUX
+      // création d'une variable marqueur
       for (const station of stations) {
         let marqueur = this.creerMarqueurCarte(station);
-        //on passe cette variable dans la méthode addlistenersCarte.
+        //on récupère le marqueur pour la méthode addlistenersCarte Lesmarqueurs se créent
         this.addlistenersCarte(marqueur)
       }
     });
@@ -80,10 +78,9 @@ class Map {
     return marqueurCarte;
   }
 
-  //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction
-  // on attribue le paramètre marqueur qui appellee lui même la methode marqueurCarte (station)
+
+  //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction, ici ligne 32
   addlistenersCarte(param) {
-    // recuperation du text contentdes divs HTML
     let places = document.getElementById("places")
     let velos = document.getElementById("velos")
     let adresse = document.getElementById("adresse")
@@ -123,7 +120,7 @@ class Map {
           adresse.textContent = "";
           nomStation.textContent = "";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
-      }else { //appel de la procédure de réservation ligne 18
+      } else { //appel de la procédure de réservation ligne 18
         this.reservationManager;
       }
     })

@@ -23,8 +23,6 @@ class Firm {
       this.buttonCanvas.id = "set";
       this.buttonCanvas.textContent = "Envoyer votre demande"
       this.divResa.appendChild(this.buttonCanvas);
-      // Ajout d'un addlistener au click sur le bouton
-      // l'event est créé, new Event est ecouté dans le document
       this.buttonCanvas.addEventListener("click", () => {
         let event = new Event("firmedEvent", {
           bubbles: true
@@ -56,42 +54,54 @@ class Firm {
   // les données sont établies dans les addlisteners
   renderCanvas() {
     if (this.drawing) {
-      // commence le tracé à partir coordonés lastPos,
+      // commence le tracé à partir coordonéées lastPos,
       // soit le point de départ de chaque ligne
       this.ctx.moveTo(this.lastPos.x, this.lastPos.y);
        //trace la ligne
       this.ctx.stroke();
       // va tracer une ligne de lastPos à mousePos
       this.ctx.lineTo(this.mousePos.x, this.mousePos.y);
-      // le mouse Pos actuel en lastPos
+      // le le mouse Pos actuel en lastPos
       this.lastPos = this.mousePos;
     }
   }
 
   // pour la fluidité d'éxécution du dessin sur le canvas
-// s'applique la methode requestAnimationFrame pour appeller le rendenCanvas de façon sequentielle
+  // fonction qui s'appelle elle même et qui est mise en oeuvre
+  //par la méthode du navigateur requestAnimationFrame
   drawLoop() {
     requestAnimFrame(this.drawLoop.bind(this));
     this.renderCanvas();
   };
 
+
+  // fonctions flechées car si fonction anonyme le this devient l'event
+  //et non plus l'objet( garder le contexte de l'objet)
   // au mouseDown, on commence à dessiner en prenant en compte getMousePos
   addListeners() {
     this.canvas.addEventListener("mousedown", (e) => {
       //debut du tracé
       this.drawing = true;
+      //lastPos devient la mousePos
+      //lastPos est la position rectifiée de la souris
       this.lastPos = this.getMousePos(this.canvas, e);
     },false)
+
+    // actualise en permanence la position de la souris en fonction de son déplacement
+    //le getMousePos devient le mousePos et non plus le lastPos
   this.canvas.addEventListener("mousemove", (e) => {
+      //pas besoin du drawing car c'est juste pour récuperer
+      //le changement de coordonnées de la souris, qui'il y ait ou pas un drawing en cours
       this.mousePos = this.getMousePos(this.canvas, e);
     }, false);
-    this.canvas.addEventListener("mouseup", (e) => {
+
+    this.canvas.addEventListener("mouseup", () => {
       // arrêt du dessin
       this.drawing = false;
     }, false);
-
   // sert à écrire sur le canvas selon un sequençage fluide sur differents navigateurs
-  // Appelle une animation et lui spécifie en paramètre un intervalle de rafraîchissement
+  // notifie une animation et lui spécifie
+  //une fonction de mise à jour de l'animation  et prend en argument un callbabck
     window.requestAnimFrame = (function(callback) {
       return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -102,7 +112,9 @@ class Firm {
           window.setTimeout(callback, 1000 / 60);
         };
     })();
+
     // Applique le rafraichissement à la methode Drawloop
     this.drawLoop();
   };
+
 }
