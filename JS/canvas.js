@@ -61,7 +61,7 @@ class Firm {
       this.ctx.stroke();
       // va tracer une ligne de lastPos à mousePos
       this.ctx.lineTo(this.mousePos.x, this.mousePos.y);
-      // le le mouse Pos actuel en lastPos
+      //  le mouse Pos actuel en lastPos
       this.lastPos = this.mousePos;
     }
   }
@@ -79,6 +79,7 @@ class Firm {
   //et non plus l'objet( garder le contexte de l'objet)
   // au mouseDown, on commence à dessiner en prenant en compte getMousePos
   addListeners() {
+
     this.canvas.addEventListener("mousedown", (e) => {
       //debut du tracé
       this.drawing = true;

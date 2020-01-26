@@ -37,9 +37,9 @@ body {
   font-size: 1em;
   width: 100%;
 }
-#header_image {
+/*#header_image {
   float: left;
-}
+}*/
 #entete {
   display: flex;
   justify-content: space-around;

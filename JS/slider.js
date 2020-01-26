@@ -1,7 +1,6 @@
 
-
+//20 01 20
 class Slider {
-
   // les paramètres sont le tableau JSON du fichier LaunchObjects et sa div parent container_carousel créée en HTML.
   constructor(objets, container) {
     this.objets = objets;

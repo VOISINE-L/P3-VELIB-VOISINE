@@ -26,7 +26,7 @@ class ReservationManager {
     this.retrieveReservation();
   }
 
-  // addlistener pour faire apparaître le canvas, déclaré dans App.js L 25
+  // addlistener pour faire apparaître le canvas, déclaré dans map.js L18
   addListener() {
     this.userForm.addEventListener("submit", (e) => {
       this.divForm = document.getElementById("div_form");
@@ -87,7 +87,7 @@ class ReservationManager {
       // on fait réapparaitre la div de confirmation de résa qui a été masquée en app.js ligne 2
       document.getElementById("infosResa").style.display = "block";
       // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
-      this.endReservation = Date.now() + 10000;
+      this.endReservation = Date.now() + 1200000;
       //stocker le nom de la station choisie et l'heure de fin de la résa
       this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
       this.nomStation = document.getElementById("nomStation").textContent;

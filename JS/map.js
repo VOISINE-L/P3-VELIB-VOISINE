@@ -40,7 +40,7 @@ class Map {
       // création d'une variable marqueur
       for (const station of stations) {
         let marqueur = this.creerMarqueurCarte(station);
-        //on récupère le marqueur pour la méthode addlistenersCarte Lesmarqueurs se créent
+        //on récupère le marqueur pour la méthode addlistenersCarte Les marqueurs se créent
         this.addlistenersCarte(marqueur)
       }
     });
@@ -52,7 +52,7 @@ class Map {
     // atribution d'une icone
     this.status = station.status;
     let marqueurUrl;
-    if (station.status === "OPEN") {
+    if (station.status === "OPEN"&& station.available_bikes>0) {
       marqueurUrl = 'images_sliders/png/leaf-orange.png'
     }else {
       marqueurUrl = 'images_sliders/png/leaf-red.png'
@@ -99,7 +99,6 @@ class Map {
         this.divForm.style.height = "590px";
         this.fermeture.id = "form3";
         this.imageFermeture.src = "images_sliders/png/chien-carlin.png";
-        this.messageFermeture = document.createElement("button");
         this.messageFermeture.id = "messageFermeture"
         this.messageFermeture.textContent = "Choisir une station proche de celle ci"
         this.divResa.innerHTML = ""; // vidage de la divResa
