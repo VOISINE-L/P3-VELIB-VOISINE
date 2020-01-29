@@ -6,7 +6,6 @@ class Map {
   //Les paramètres sont la div de rattachement et les coordonnées GPS du centre de la ville choisie.
     this.carte = this.setMap(mapId, mapCenter);
     this.clusters = L.markerClusterGroup();
-    //this.icone = icone;
     this.form = document.getElementById("form1");
     this.form2 = document.getElementById("form2")
     this.divResa = document.getElementById("div_resa");
@@ -16,9 +15,8 @@ class Map {
     this.imageFermeture = document.createElement("img");
     this.messageFermeture = document.createElement("button");
     this.reservationManager = new ReservationManager("div_resa");
-
   }
-  //Fonction pour déclarer et afficher la carte
+  //Fonction pour déclarer et afficher la carte avec la methode leaflet
   setMap(mapId, mapCenter) {
     var carte = L.map(mapId).setView(mapCenter, 13);
     // ajout de tuiles sur la carte
@@ -32,10 +30,8 @@ class Map {
   //Fonction pour afficher les marqueurs d'après l'API JC DECAUX
   setMarkersFromApi(url) {
     ajaxGet(url, (callback) => {
-      console.log(callback)
       // creation d'un tableau du paramètre stations
       let stations = JSON.parse(callback)
-      console.log(stations)
       // recuperation du tableau JC DECAUX
       // création d'une variable marqueur
       for (const station of stations) {
@@ -45,11 +41,9 @@ class Map {
       }
     });
   }
-
   // cette methode definit les marqueurs attribués à chaque item du tableau JSON
   creerMarqueurCarte(station) {
-
-    // atribution d'une icone
+    // atribution d'une icone par  rapport a statut de la station
     this.status = station.status;
     let marqueurUrl;
     if (station.status === "OPEN"&& station.available_bikes>0) {
@@ -67,11 +61,12 @@ class Map {
         popupAnchor: [0, -26],
       })
     })
-// attribtion d'une place dans la div de reservation
+// attribution d'une place dans la div de reservation
     marqueurCarte.nomStation = station.name;
     marqueurCarte.velosDispo = station.available_bikes;
     marqueurCarte.placesDispo = station.available_bike_stands
     marqueurCarte.adresseStation = station.address;
+    // on  ajoute le marqueur regroupe les marqueurs
     marqueurCarte.bindPopup(("<p>" + station.name + "</p>") + ("<p>" + station.status + "</p>")).openPopup();
     this.clusters.addLayer(marqueurCarte); // ajout des marqueurs au groupe clusters
     this.carte.addLayer(this.clusters);
@@ -79,14 +74,13 @@ class Map {
   }
 
 
-  //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction, ici ligne 32
+  //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction, ici ligne 40
   addlistenersCarte(param) {
     let places = document.getElementById("places")
     let velos = document.getElementById("velos")
     let adresse = document.getElementById("adresse")
     let nomStation = document.getElementById("nomStation")
-
-    // Adresse.text content devient marqueurCarte.adresseStation = station.address par passage de paramètre en ligne 44
+    // Adresse.text content devient marqueurCarte.adresseStation = station.address par passage de paramètre en ligne 42
     param.addEventListener("click", () => {
       adresse.textContent = param.adresseStation;
       places.textContent = param.placesDispo;

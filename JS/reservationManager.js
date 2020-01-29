@@ -26,7 +26,7 @@ class ReservationManager {
     this.retrieveReservation();
   }
 
-  // addlistener pour faire apparaître le canvas, déclaré dans map.js L18
+  // addlistener pour faire apparaître le canvas, déclaré dans App.js L 25
   addListener() {
     this.userForm.addEventListener("submit", (e) => {
       this.divForm = document.getElementById("div_form");
@@ -41,27 +41,20 @@ class ReservationManager {
         this.divForm.style.height = "460px";
         this.divForm.style.top = "calc(50% - 260px)";
         this.divResa.style.textAlign = "center";
-
-
       } else {
         this.userForm.elements.prenom_utilisateur.style.backgroundColor = "red";
         this.userForm.elements.nom_utilisateur.style.backgroundColor = "red";
       }
+    })// ferleture du submit sur le form2
       //Evenement pour vider la div de confirmationRésa lorsque le compteur est à 0
-      document.addEventListener("timerEnded", this.clearReservation.bind(this), console.log("1"));
-    })
+    document.addEventListener("timerEnded", this.clearReservation.bind(this));
     //evènements pour écouter le canvas à l'aide l'evènement personnalisé créé dans
     // le fichier canvas .js, dans le setUpButtonCAnvas
     document.addEventListener("firmedEvent", () => {
       this.setReservation();
-
     });
-    document.addEventListener("resetReservation",()=>{
-        this.buttonResetReservation.textContent = "Annuler la reservation";
-        this.clearReservation();
-
-    })
   } //fermeture addlisteners
+
   setReservation() {
     // creation d'un canvas vide, à comparer au canvas de mon appli
     const blank = document.createElement("canvas");
@@ -78,7 +71,6 @@ class ReservationManager {
       adresseOk = true;
       this.label.style.borderColor = "transparent";
     } // comparaison du canvas avec le canvas de reference blanc
-    console.log(adresseOk);
     // les canvas sont mis sous forme d'url de données pour être comparés.
     if (blank.toDataURL() !== this.firmBox.canvas.toDataURL() && adresseOk) {
       this.firmBox.buttonCanvas.style.display = "none";
@@ -87,7 +79,7 @@ class ReservationManager {
       // on fait réapparaitre la div de confirmation de résa qui a été masquée en app.js ligne 2
       document.getElementById("infosResa").style.display = "block";
       // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
-      this.endReservation = Date.now() + 1200000;
+      this.endReservation = Date.now() + 12000;
       //stocker le nom de la station choisie et l'heure de fin de la résa
       this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
       this.nomStation = document.getElementById("nomStation").textContent;
@@ -97,7 +89,6 @@ class ReservationManager {
     } else if (adresseOk) {
       alert("N'oubliez pas de signer votre réservation");
     }
-
     document.getElementById("annulation").addEventListener("click", () => {
       this.clearReservation()
     })
@@ -113,14 +104,13 @@ class ReservationManager {
     this.divResa.appendChild(this.userForm);
     this.userForm.elements.prenom_utilisateur.value = "";
     this.userForm.elements.nom_utilisateur.value = "";
-    // ces variables sont reprises de app.js aux lignes 71 et suivantes
+    // ces variables sont reprises de map.js aux lignes 71 et suivantes
     // A l'expiration du décompte, on vide également le formulaire de détail de la station
     nomStation.textContent = ""
     adresse.textContent = "";
     places.textContent = "";
     velos.textContent = "";
-    this.messageExpiration.textContent = "";
-
+    //this.messageExpiration.textContent = "";
   };
 
   countdown() {
@@ -131,7 +121,6 @@ class ReservationManager {
       //et le fait de lui avoir rajouté 1200000 secondes permet un compteur de temps relatif de 20mn.
       //en divisant par 1000, on met l'unité en secondes
       var decompte = Math.floor((sessionStorage.getItem("timeOut") - Date.now()) / 1000);
-      //console.log(decompte);
       if (decompte > 0) {
         //math floor pour renvoyer au plus grand entier issu du calcul
         // du reste de la divison du décompte en secondes par 3600, le tout mutiplie par §0 pour mettre en minutes
@@ -153,31 +142,28 @@ class ReservationManager {
           bubbles: true,
         });
         document.dispatchEvent(event);
-
       }
-    }, 1000);
+    }, 60);
   }
 
   clearReservation() {
+    this.messageExpiration;
+    this.messageExpiration.textContent = "Votre réservation a expiré";
+    this.sectionInfosResa.appendChild(this.messageExpiration);
     this.sectionInfosResa.style.display = "none";
     //on clear intervalId pour cesser d'appeler le timer
     this.intervalId = clearInterval(this.intervalId);
-    // on enlève le stockage des donnée et le décompte
+    // on enlève le stockage des données et le décompte
     sessionStorage.removeItem("timeOut");
     sessionStorage.removeItem("stationChoisie");
     this.surname = localStorage.getItem("surname") ? localStorage.getItem("surname") : "";
     this.name = localStorage.getItem("name") ? localStorage.getItem("name") : "";
-    this.timeOut = sessionStorage.getItem("timeOut") ? sessionStorage.getItem("timeOut") : undefined
+    this.timeOut = sessionStorage.getItem("timeOut") ? sessionStorage.getItem("timeOut") : undefined;
     // on fait apparaître un message d'expiration
-    this.messageExpiration;
-    this.messageExpiration.textContent = "Votre réservation a expiré";
-    this.sectionInfosResa.appendChild(this.messageExpiration)
-
-    // Esnuite, on peut remettre les formulaires de résa  en dehors de l'intervalle que l'on a arrêté préalablement
+    // Ensuite, on peut remettre les formulaires de résa  en dehors de l'intervalle que l'on a arrêté préalablement
     setTimeout(() => {
       this.resetForms()
     }, 2000)
-
   }
 
   retrieveReservation() {
@@ -192,13 +178,11 @@ class ReservationManager {
       document.getElementById("nom_utilisateur").value = this.name;
     }
     if (this.nomStation !== undefined && this.counterReservation !== undefined) {
-      this.affichageSectionInfosResa()
-
+      this.affichageSectionInfosResa();
     }
   }
 
   affichageSectionInfosResa() {
-    console.log("condition acquise")
     document.getElementById("infosResa").style.display = "block";
     this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie")
     this.countdown();
