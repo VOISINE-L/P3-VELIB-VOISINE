@@ -1,16 +1,16 @@
 //constructor appelé sur Div_resa dans app.js
 class ReservationManager {
-  constructor(reservation_box_id) {//instancié sur la div_resa en map.js, ligne 18 du constructor
+  constructor(reservation_box_id) {//instancié sur la div_resa en map.js, ligne 17 du constructor
     this.reservation_box_id = reservation_box_id;
     this.nomStation = undefined;
     this.surname = undefined;
     this.name = undefined;
     this.address = undefined;
-    this.EndReservation = undefined; // heure de fin de la reservation
-    this.firmBox = undefined; //ex DivForm
-    this.firm = undefined; // signature
-    this.userFormContainer = document.getElementById(reservation_box_id) // ex divResa
-    this.userForm = document.getElementById("form2")
+    this.EndReservation = undefined; // Heure de fin de la reservation
+    this.firmBox = undefined; //Ex DivForm
+    this.firm = undefined; // Signature
+    this.userFormContainer = document.getElementById(reservation_box_id); // Ex divResa
+    this.userForm = document.getElementById("form2");
     this.intervalId = undefined;
     this.counterReservation = document.getElementById("compteurReservation");
     this.addressInfosResa = document.getElementById("adresseInfosresa");
@@ -18,7 +18,6 @@ class ReservationManager {
     this.stationChoisie = undefined;
     this.sectionInfosResa = document.getElementById("infosResa");
     this.label = document.getElementById("label");
-    this.messageExpiration = document.createElement("h2");
     this.countdown;
     this.divResa = document.getElementById("div_resa");
     this.addListener();
@@ -26,7 +25,7 @@ class ReservationManager {
     this.retrieveReservation();
   }
 
-  // addlistener pour faire apparaître le canvas, déclaré dans App.js L 25
+  // addlistener pour faire apparaître le canvas et ecouter les evenements
   addListener() {
     this.userForm.addEventListener("submit", (e) => {
       this.divForm = document.getElementById("div_form");
@@ -37,7 +36,7 @@ class ReservationManager {
       // si les champs nom et prénom sont remplis, apparition du canvas
       if (this.surname.length > 0 && this.name.length > 0) {
         //declenchement du canvas, instancié avec le gestionnaire de réservation  en map L18.
-        this.firmBox = new Firm(this.reservation_box_id)
+        this.firmBox = new Firm(this.reservation_box_id);
         this.divForm.style.height = "460px";
         this.divForm.style.top = "calc(50% - 260px)";
         this.divResa.style.textAlign = "center";
@@ -45,7 +44,7 @@ class ReservationManager {
         this.userForm.elements.prenom_utilisateur.style.backgroundColor = "red";
         this.userForm.elements.nom_utilisateur.style.backgroundColor = "red";
       }
-    })// ferleture du submit sur le form2
+    })// Fermeture du submit sur le form2
       //Evenement pour vider la div de confirmationRésa lorsque le compteur est à 0
     document.addEventListener("timerEnded", this.clearReservation.bind(this));
     //evènements pour écouter le canvas à l'aide l'evènement personnalisé créé dans
@@ -53,10 +52,10 @@ class ReservationManager {
     document.addEventListener("firmedEvent", () => {
       this.setReservation();
     });
-  } //fermeture addlisteners
+  } //Fermeture addlisteners
 
   setReservation() {
-    // creation d'un canvas vide, à comparer au canvas de mon appli
+    // Creation d'un canvas vide, à comparer au canvas de mon appli, ligne 74
     const blank = document.createElement("canvas");
     blank.width = this.firmBox.canvas.width;
     blank.height = this.firmBox.canvas.height;
@@ -70,17 +69,17 @@ class ReservationManager {
     } else {
       adresseOk = true;
       this.label.style.borderColor = "transparent";
-    } // comparaison du canvas avec le canvas de reference blanc
-    // les canvas sont mis sous forme d'url de données pour être comparés.
+    } // Comparaison du canvas avec le canvas de reference blanc
+    // Les canvas sont mis sous forme d'url de données pour être comparés.
     if (blank.toDataURL() !== this.firmBox.canvas.toDataURL() && adresseOk) {
       this.firmBox.buttonCanvas.style.display = "none";
       localStorage.setItem("name", this.name);
-      localStorage.setItem("surname", this.surname)
-      // on fait réapparaitre la div de confirmation de résa qui a été masquée en app.js ligne 2
+      localStorage.setItem("surname", this.surname);
+      //On fait réapparaitre la div de confirmation de résa qui a été masquée en map.js ligne 2
       document.getElementById("infosResa").style.display = "block";
-      // fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
-      this.endReservation = Date.now() + 12000;
-      //stocker le nom de la station choisie et l'heure de fin de la résa
+      // Fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
+      this.endReservation = Date.now() + 1200000;
+      //Stocker le nom de la station choisie et l'heure de fin de la résa
       this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
       this.nomStation = document.getElementById("nomStation").textContent;
       this.stationChoisie = sessionStorage.setItem("stationChoisie", this.nomStation)
@@ -89,12 +88,15 @@ class ReservationManager {
     } else if (adresseOk) {
       alert("N'oubliez pas de signer votre réservation");
     }
+    /*if (this.station.status === "OPEN"&& this.station.available_bikes>0) {
+      marqueurUrl.style.display ="none" Ou custom event de la map.js ligne 53?
+    }*/
     document.getElementById("annulation").addEventListener("click", () => {
       this.clearReservation()
     })
   }
 
-  // fonction pour remettre à zero les formulaires , appelée dans clearReservation
+  // Fonction pour remettre à zero les formulaires , appelée dans clearReservation
   resetForms() {
     document.getElementById("infosResa").style.display = "none";
     // enlever le canvas de la divResa
@@ -123,7 +125,7 @@ class ReservationManager {
       var decompte = Math.floor((sessionStorage.getItem("timeOut") - Date.now()) / 1000);
       if (decompte > 0) {
         //math floor pour renvoyer au plus grand entier issu du calcul
-        // du reste de la divison du décompte en secondes par 3600, le tout mutiplie par §0 pour mettre en minutes
+        // du reste de la divison du décompte en secondes par 3600, le tout divisé par 60 pour mettre en minutes
         var minutes = Math.floor(decompte % 3600/60);
         var seconds = Math.floor(decompte % 60);
         // pour rajouter un zéro lorsque le décompte devient un chiffre
@@ -133,11 +135,11 @@ class ReservationManager {
         if (seconds < 10) {
           seconds = ("0" + seconds);
         }
-        // ajout de ces informations dans la section HTML
+        // Ajout de ces informations dans la section HTML
         this.counterReservation.textContent = minutes + 'mn' + seconds + 's ';
         this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie")
       } else { //s'arrete à 0, on dispache un customEvent et on l'ecoute dans les addListener
-        // le contenu de timerEnded est defini ligne 46 comme étant la fonction clearReservation
+        // le contenu de timerEnded est defini ligne 49 comme étant la fonction clearReservation
         let event = new Event("timerEnded", {
           bubbles: true,
         });
@@ -147,11 +149,8 @@ class ReservationManager {
   }
 
   clearReservation() {
-    this.messageExpiration;
-    this.messageExpiration.textContent = "Votre réservation a expiré";
-    this.sectionInfosResa.appendChild(this.messageExpiration);
     this.sectionInfosResa.style.display = "none";
-    //on clear intervalId pour cesser d'appeler le timer
+    //On clear intervalId pour cesser d'appeler le timer
     this.intervalId = clearInterval(this.intervalId);
     // on enlève le stockage des données et le décompte
     sessionStorage.removeItem("timeOut");
@@ -159,7 +158,6 @@ class ReservationManager {
     this.surname = localStorage.getItem("surname") ? localStorage.getItem("surname") : "";
     this.name = localStorage.getItem("name") ? localStorage.getItem("name") : "";
     this.timeOut = sessionStorage.getItem("timeOut") ? sessionStorage.getItem("timeOut") : undefined;
-    // on fait apparaître un message d'expiration
     // Ensuite, on peut remettre les formulaires de résa  en dehors de l'intervalle que l'on a arrêté préalablement
     setTimeout(() => {
       this.resetForms()
@@ -168,11 +166,10 @@ class ReservationManager {
 
   retrieveReservation() {
     //Mise en place d'une condition ternaire, voir si on a des elements dans le session storage, sinon vaut undefined
-    this.timeOut = sessionStorage.getItem("timeOut") ? sessionStorage.getItem("timeOut") : undefined
+    this.timeOut = sessionStorage.getItem("timeOut") ? sessionStorage.getItem("timeOut") : undefined;
     this.nomStation = sessionStorage.getItem("stationChoisie") ? sessionStorage.getItem("stationChoisie") : undefined;
     this.surname = localStorage.getItem("surname") ? localStorage.getItem("surname") : undefined;
     this.name = localStorage.getItem("name") ? localStorage.getItem("name") : undefined;
-
     if (this.surname !== undefined && this.name !== undefined) {
       document.getElementById("prenom_utilisateur").value = this.surname;
       document.getElementById("nom_utilisateur").value = this.name;

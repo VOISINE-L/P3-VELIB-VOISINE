@@ -19,9 +19,9 @@ let carousel = [{
     texte: "Et ensuite, à vous la Vélo'Cité... tout simplement!"
   }
 ];
-//on instancie le slider
+//On instancie le slider
 let slider = new Slider(carousel, "container_carousel");
 
-//instanciation de la carte
+//Instanciation de la carte
 let map = new Map("carte", [43.600000, 1.433333]);
 map.setMarkersFromApi("https://api.jcdecaux.com/vls/v1/stations?contract=toulouse&apiKey=1ebef17bde5413d6ad199afa6cffac6cee46aa37")

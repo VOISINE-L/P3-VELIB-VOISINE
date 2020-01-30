@@ -64,19 +64,16 @@ class Firm {
     }
   }
 
-
   // Applique le rafraichissement à la methode Drawloop pour la fluidité d'éxécution du dessin sur le canvas
   drawLoop() {
     requestAnimFrame(this.drawLoop.bind(this));
     this.renderCanvas();
   };
 
-
   // fonctions flechées car si fonction anonyme le this devient l'event
   //et non plus l'objet( garder le contexte de l'objet)
   // au mouseDown, on commence à dessiner en prenant en compte getMousePos
   addListeners() {
-
     this.canvas.addEventListener("mousedown", (e) => {
       //debut du tracé
       this.drawing = true;
@@ -89,7 +86,7 @@ class Firm {
       //le changement de coordonnées de la souris, qu'il y ait ou pas un drawing en cours
       this.mousePos = this.getMousePos(this.canvas, e);
     }, false);
-    this.canvas.addEventListener("mouseup", () => {
+    this.canvas.addEventListener("mouseup", (e) => {
       // arrêt du dessin
       this.drawing = false;
     }, false);

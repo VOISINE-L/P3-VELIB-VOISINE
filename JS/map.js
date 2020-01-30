@@ -16,7 +16,7 @@ class Map {
     this.messageFermeture = document.createElement("button");
     this.reservationManager = new ReservationManager("div_resa");
   }
-  //Fonction pour déclarer et afficher la carte avec la methode leaflet
+  //Méthode pour déclarer et afficher la carte avec la methode leaflet
   setMap(mapId, mapCenter) {
     var carte = L.map(mapId).setView(mapCenter, 13);
     // ajout de tuiles sur la carte
@@ -27,7 +27,7 @@ class Map {
     }).addTo(carte);
     return carte
   }
-  //Fonction pour afficher les marqueurs d'après l'API JC DECAUX
+  //Méthode pour afficher les marqueurs d'après l'API JC DECAUX
   setMarkersFromApi(url) {
     ajaxGet(url, (callback) => {
       // creation d'un tableau du paramètre stations
@@ -41,7 +41,7 @@ class Map {
       }
     });
   }
-  // cette methode definit les marqueurs attribués à chaque item du tableau JSON
+  // cette méthode definit les marqueurs attribués à chaque item du tableau JSON
   creerMarqueurCarte(station) {
     // atribution d'une icone par  rapport a statut de la station
     this.status = station.status;
@@ -49,7 +49,8 @@ class Map {
     if (station.status === "OPEN"&& station.available_bikes>0) {
       marqueurUrl = 'images_sliders/png/leaf-orange.png'
     }else {
-      marqueurUrl = 'images_sliders/png/leaf-red.png'
+      marqueurUrl = 'images_sliders/png/leaf-red.png';
+      /*Mise en place d'un customEvent à récuperer en reservationManager ligne 91?*/
     };
     var marqueurCarte = L.marker([station.position.lat, station.position.lng], {
       icon: L.icon({
@@ -61,11 +62,11 @@ class Map {
         popupAnchor: [0, -26],
       })
     })
-// attribution d'une place dans la div de reservation
+// Attribution d'une place dans la div de reservation
     marqueurCarte.nomStation = station.name;
     marqueurCarte.velosDispo = station.available_bikes;
     marqueurCarte.placesDispo = station.available_bike_stands
-    marqueurCarte.adresseStation = station.address;
+    marqueurCarte.adresseStation = station.address
     // on  ajoute le marqueur regroupe les marqueurs
     marqueurCarte.bindPopup(("<p>" + station.name + "</p>") + ("<p>" + station.status + "</p>")).openPopup();
     this.clusters.addLayer(marqueurCarte); // ajout des marqueurs au groupe clusters
@@ -73,13 +74,12 @@ class Map {
     return marqueurCarte;
   }
 
-
   //Peu importe le paramètre, il sera défini au moment de l'appel de cette fonction, ici ligne 40
   addlistenersCarte(param) {
-    let places = document.getElementById("places")
-    let velos = document.getElementById("velos")
-    let adresse = document.getElementById("adresse")
-    let nomStation = document.getElementById("nomStation")
+    let places = document.getElementById("places");
+    let velos = document.getElementById("velos");
+    let adresse = document.getElementById("adresse");
+    let nomStation = document.getElementById("nomStation");
     // Adresse.text content devient marqueurCarte.adresseStation = station.address par passage de paramètre en ligne 42
     param.addEventListener("click", () => {
       adresse.textContent = param.adresseStation;
@@ -95,7 +95,7 @@ class Map {
         this.imageFermeture.src = "images_sliders/png/chien-carlin.png";
         this.messageFermeture.id = "messageFermeture"
         this.messageFermeture.textContent = "Choisir une station proche de celle ci"
-        this.divResa.innerHTML = ""; // vidage de la divResa
+        this.divResa.innerHTML = ""; // Vidage de la divResa
         this.divResa.style.borderRadius = "20px";
         this.divResa.appendChild(this.fermeture); //mettre dans la div resa vide la div de fermeture
         this.fermeture.appendChild(this.imageFermeture) // la div contient une image (chien)

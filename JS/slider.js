@@ -1,6 +1,6 @@
 //20 01 20
 class Slider {
-  // les paramètres sont le tableau JSON du fichier LaunchObjects et sa div parent container_carousel créée en HTML.
+  // Les paramètres sont le tableau JSON du fichier LaunchObjects et sa div parent container_carousel créée en HTML.
   constructor(objets, container) {
     this.objets = objets;
     this.initial = true;
@@ -14,7 +14,7 @@ class Slider {
     this.init();
 
   }
-  // methode qui créee en JS le diaporama image  et les  textes d'après les items du tableau
+  // Méthode qui créee en JS le diaporama image  et les  textes d'après les items du tableau JSON dans launchObjects.
   ajouter(objet) {
     this.container.innerHTML = "";
     let figureCarousel = document.createElement("figure");
@@ -30,7 +30,6 @@ class Slider {
     let figcaptionCarousel = document.createElement("figcaption");
     figcaptionCarousel.id = "boite";
     let spanCarousel = document.createElement("span");
-    spanCarousel.classList.add = "arrow.box"; // VOIR CE PROBLEME D ARROW BOX
     let titreCarousel = document.createElement("h1")
     titreCarousel.id = "titre_carousel";
     titreCarousel.textContent = objet.titre;
@@ -51,16 +50,16 @@ class Slider {
     if (this.initial === true) {
       this.indice = 0;
     }
-    // passe en paramètre les objets créés par la methode ajouter par leur indice
+    // Passe en paramètre les objets créés par la methode ajouter par leur indice
     this.ajouter(this.objets[this.indice]);
-    // met en place un interval pour lancer le slider toute les 5s
+    // Met en place un intervalle pour lancer le slider toute les 5s
     this.lancerAutoSlider();
-    // met en place les commandes sur les flèches et le clavier
+    // Met en place les commandes sur les flèches et le clavier
     this.addlisteners()
   }
 
   avancerSlider() {
-    // augmente l'indice jusque la fin du tableau
+    // Augmente l'indice jusque la fin du tableau
     if ((this.indice >= 0) && (this.indice < this.objets.length - 1)) {
       this.indice++;
       //sinon remet l'indice à 0
@@ -72,16 +71,14 @@ class Slider {
   }
 
   reculerSlider() {
-    // reduit l'indice jusque la fin du tableau
+    // Réduit l'indice jusque la fin du tableau
     if ((this.indice > 0) && (this.indice <= this.objets.length - 1)) {
       this.indice--;
-      // alternatif: this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte);
       // sinon passe au dernier item du tableau
     } else {
       this.indice = this.objets.length - 1;
-      //this.ajouter(this.objets[this.indice].image, this.objets[this.indice].titre, this.objets[this.indice].texte)
     }
-    //appelle la methode ajouter et lui passe tous les items du tableau
+    //Appelle la méthode ajouter et lui passe tous les items du tableau
     this.ajouter(this.objets[this.indice]);
   }
 
@@ -89,7 +86,7 @@ class Slider {
     this.sequence = setInterval(this.avancerSlider.bind(this), 5000);
   }
 
-  // clear le lancerAutoSlider
+  // Clear le lancerAutoSlider
   stopperAutoSlider() {
     clearInterval(this.sequence);
   }
