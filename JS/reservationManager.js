@@ -77,7 +77,7 @@ class ReservationManager {
       //On fait réapparaitre la div de confirmation de résa qui a été masquée en map.js ligne 2
       document.getElementById("infosResa").style.display = "block";
       // Fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
-      this.endReservation = Date.now() + 10000;
+      this.endReservation = Date.now() + 1200000;
       //Stocker le nom de la station choisie et l'heure de fin de la résa
       this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
       this.nomStation = document.getElementById("nomStation").textContent;
