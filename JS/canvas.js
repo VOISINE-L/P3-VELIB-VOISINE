@@ -14,14 +14,14 @@ class Firm {
     this.divResa = document.getElementById("div_resa")
     this.divResa.style.display = "block";
     this.setUpCanvasButton();
-    this.addListeners() //  pour appeler les évènements liés à la souris
+    this.addListeners(); //  pour appeler les évènements liés à la souris
   }
 
   // Creation d'un bouton canvas et attribution d'un customEvent sur son click
   setUpCanvasButton() {
-    this.buttonCanvas = document.createElement("button")
+    this.buttonCanvas = document.createElement("button");
     this.buttonCanvas.id = "set";
-    this.buttonCanvas.textContent = "Envoyer votre demande"
+    this.buttonCanvas.textContent = "Envoyer votre demande";
     this.divResa.appendChild(this.buttonCanvas);
     this.buttonCanvas.addEventListener("click", () => {
       let event = new Event("firmedEvent", {
