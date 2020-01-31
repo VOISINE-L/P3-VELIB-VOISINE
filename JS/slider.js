@@ -1,4 +1,4 @@
-//20 01 20
+
 class Slider {
   // Les paramètres sont le tableau JSON du fichier LaunchObjects et sa div parent container_carousel créée en HTML.
   constructor(objets, container) {
@@ -12,25 +12,24 @@ class Slider {
     this.image;
     this.container = document.getElementById(container);
     this.init();
-
   }
   // Méthode qui créee en JS le diaporama image  et les  textes d'après les items du tableau JSON dans launchObjects.
   ajouter(objet) {
     this.container.innerHTML = "";
     let figureCarousel = document.createElement("figure");
-    figureCarousel.id = "image_carousel"
+    figureCarousel.id = "image_carousel";
     this.divChevron1.id = "chevron1";
     this.divChevron1.fontStyle = "chevron1";
-    this.divChevron1.className = "fas fa-chevron-left"
-    this.divChevron2.id = "chevron2"
-    this.divChevron2.fontStyle = "fontawesome"
+    this.divChevron1.className = "fas fa-chevron-left";
+    this.divChevron2.id = "chevron2";
+    this.divChevron2.fontStyle = "fontawesome";
     this.divChevron2.className = "fas fa-chevron-right";
     let imageCarousel = document.createElement("img");
     imageCarousel.src = objet.image;
     let figcaptionCarousel = document.createElement("figcaption");
     figcaptionCarousel.id = "boite";
     let spanCarousel = document.createElement("span");
-    let titreCarousel = document.createElement("h1")
+    let titreCarousel = document.createElement("h1");
     titreCarousel.id = "titre_carousel";
     titreCarousel.textContent = objet.titre;
     let texteCarousel = document.createElement("p");
@@ -55,7 +54,7 @@ class Slider {
     // Met en place un intervalle pour lancer le slider toute les 5s
     this.lancerAutoSlider();
     // Met en place les commandes sur les flèches et le clavier
-    this.addlisteners()
+    this.addlisteners();
   }
 
   avancerSlider() {
@@ -67,7 +66,7 @@ class Slider {
       this.indice = 0;
     }
     //appelle la methode ajouter et lui passe tous les items du tableau
-    this.ajouter(this.objets[this.indice])
+    this.ajouter(this.objets[this.indice]);
   }
 
   reculerSlider() {

@@ -36,8 +36,8 @@ class Map {
       // création d'une variable marqueur
       for (const station of stations) {
         let marqueur = this.creerMarqueurCarte(station);
-        //on récupère le marqueur pour la méthode addlistenersCarte Les marqueurs se créent
-        this.addlistenersCarte(marqueur)
+        //on attribue une écoute d'évènement à ce marqueur
+        this.addlistenersCarte(marqueur);
       }
     });
   }
@@ -47,10 +47,9 @@ class Map {
     this.status = station.status;
     let marqueurUrl;
     if (station.status === "OPEN"&& station.available_bikes>0) {
-      marqueurUrl = 'images_sliders/png/leaf-orange.png'
+      marqueurUrl = 'images_sliders/png/leaf-orange.png';
     }else {
       marqueurUrl = 'images_sliders/png/leaf-red.png';
-      /*Mise en place d'un customEvent à récuperer en reservationManager ligne 91?*/
     };
     var marqueurCarte = L.marker([station.position.lat, station.position.lng], {
       icon: L.icon({
@@ -80,7 +79,7 @@ class Map {
     let velos = document.getElementById("velos");
     let adresse = document.getElementById("adresse");
     let nomStation = document.getElementById("nomStation");
-    // Adresse.text content devient marqueurCarte.adresseStation = station.address par passage de paramètre en ligne 42
+    // Adresse.text content devient marqueurCarte.adresseStation = station.address par passage de paramètre en ligne 40
     param.addEventListener("click", () => {
       adresse.textContent = param.adresseStation;
       places.textContent = param.placesDispo;
@@ -113,7 +112,7 @@ class Map {
           adresse.textContent = "";
           nomStation.textContent = "";
         }) // FERMETURE ADDLISTENERS MESSAGE FERMETURE
-      } else { //appel de la procédure de réservation ligne 18
+      } else { //appel de la procédure de réservation ligne 17
         this.reservationManager;
       }
     })

@@ -1,4 +1,5 @@
 // Exécute un appel AJAX GET
+
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
     req.open("GET", url);

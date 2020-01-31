@@ -24,8 +24,7 @@ class ReservationManager {
     // appelé dès le début pour pouvoir vérifier la présence d'une résa en cours dans l'API WEBSTORAGE
     this.retrieveReservation();
   }
-
-  // addlistener pour faire apparaître le canvas et ecouter les evenements
+  // addlistener pour faire apparaître le canvas et écouter les evenements
   addListener() {
     this.userForm.addEventListener("submit", (e) => {
       this.divForm = document.getElementById("div_form");
@@ -35,7 +34,7 @@ class ReservationManager {
       this.surname = this.userForm.elements.nom_utilisateur.value;
       // si les champs nom et prénom sont remplis, apparition du canvas
       if (this.surname.length > 0 && this.name.length > 0) {
-        //declenchement du canvas, instancié avec le gestionnaire de réservation  en map L18.
+        //declenchement du canvas, instancié avec le gestionnaire de réservation  en map L17.
         this.firmBox = new Firm(this.reservation_box_id);
         this.divForm.style.height = "460px";
         this.divForm.style.top = "calc(50% - 260px)";
@@ -78,7 +77,7 @@ class ReservationManager {
       //On fait réapparaitre la div de confirmation de résa qui a été masquée en map.js ligne 2
       document.getElementById("infosResa").style.display = "block";
       // Fonction pour déduire le temps écoulé et l'afficher dans la sectionInfosResa
-      this.endReservation = Date.now() + 1200000;
+      this.endReservation = Date.now() + 10000;
       //Stocker le nom de la station choisie et l'heure de fin de la résa
       this.timeOut = sessionStorage.setItem("timeOut", this.endReservation);
       this.nomStation = document.getElementById("nomStation").textContent;
@@ -88,14 +87,10 @@ class ReservationManager {
     } else if (adresseOk) {
       alert("N'oubliez pas de signer votre réservation");
     }
-    /*if (this.station.status === "OPEN"&& this.station.available_bikes>0) {
-      marqueurUrl.style.display ="none" Ou custom event de la map.js ligne 53?
-    }*/
     document.getElementById("annulation").addEventListener("click", () => {
       this.clearReservation()
     })
   }
-
   // Fonction pour remettre à zero les formulaires , appelée dans clearReservation
   resetForms() {
     document.getElementById("infosResa").style.display = "none";
@@ -117,7 +112,7 @@ class ReservationManager {
 
   countdown() {
     //Rajout de 20mn à l'heure de début de réservation
-    this.intervalId = setInterval(() => { //	lance la function à executer chaque seconde
+    this.intervalId = setInterval(() => { //	lance la function à éxécuter chaque seconde
       //var currentHour = Date.now();
       // Affichage de la soustraction de la date enregistrée dans le local storage - la date au moment de l’exécution de la fonction
       //et le fait de lui avoir rajouté 1200000 secondes permet un compteur de temps relatif de 20mn.
@@ -181,7 +176,7 @@ class ReservationManager {
 
   affichageSectionInfosResa() {
     document.getElementById("infosResa").style.display = "block";
-    this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie")
+    this.addressInfosResa.textContent = sessionStorage.getItem("stationChoisie");
     this.countdown();
     document.getElementById("annulation").addEventListener("click", () => {
       this.clearReservation()

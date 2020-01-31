@@ -367,6 +367,23 @@ button#annulation {
   height: 40px;
 }
 
+section#infosResa {
+    background-color: #e2be4c;
+    border: solid 2px #b3b3b3;
+    border-radius: 25px;
+    font-family: roboto;
+    align-items: center;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+
+
+
 @media all and (max-width: 900px) {
   #container_carousel {
     display: flex;

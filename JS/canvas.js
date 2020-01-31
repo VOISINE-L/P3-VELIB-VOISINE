@@ -94,7 +94,6 @@ class Firm {
     // sert à écrire sur le canvas selon un sequençage fluide sur differents navigateurs
     // notifie une animation et lui spécifie
     //une fonction de mise à jour de l'animation en callbabck
-
     window.requestAnimFrame = (function(callback) {
       return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -105,8 +104,6 @@ class Firm {
           window.setTimeout(callback, 1000 / 60);
         };
     })();
-
     this.drawLoop();
   };
-
 }
